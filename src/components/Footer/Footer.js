@@ -8,7 +8,34 @@ import './Footer.css'
 
 const Footer = () => (
   <footer>
-    &copy; Prime Digital Academy
+
+    <section class="ft-logo">
+      <div>
+        <a href="https://omar.house.gov/" title="Representative Ilhan Omar.">
+          <img src="https://omar.house.gov/sites/omar.house.gov/files/logo_0.png" alt="Representative Ilhan Omar."/>
+        </a>
+      </div>
+    </section>
+
+    <section class="ft-main">
+      <div>
+      </div>
+    </section>
+
+    <section class="ft-social">
+      <ul class="ft-social-list">
+          <li><a href="https://twitter.com/Ilhan"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+    </section>
+
+    <section class="ft-legal">
+      <p>
+        &copy; Prime Digital Academy
+      </p>
+    </section>
   </footer>
 );
 
