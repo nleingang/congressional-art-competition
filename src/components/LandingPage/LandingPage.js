@@ -9,6 +9,8 @@ import { Card, Image } from "semantic-ui-react";
 
 import { connect } from "react-redux";
 
+import './LandingPage.css';
+
 class LandingPage extends Component {
     componentDidMount() {
         this.props.dispatch({
@@ -18,17 +20,19 @@ class LandingPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="landing-page-wrapper">
                 {this.props.reduxState.setArt.map(item => {
-            return (
-                <Card>
-                    <Image src={item.image_url} />
-                    <Card.Content>
-                        <Card.Header>{item.title}</Card.Header>
-                        <Card.Description>{item.artist}</Card.Description>
-                    </Card.Content>
-                </Card>
-            )})}
+                    return (
+                        <Card>
+                            <Image src={item.image_url} />
+                            <Card.Content textAlign="right">
+                                <Card.Header>{item.title}</Card.Header>
+                                <Card.Description>{item.artist}</Card.Description>
+                            </Card.Content>
+                        </Card>
+                        )}
+                    )
+                }
             </div>
         )
     }
