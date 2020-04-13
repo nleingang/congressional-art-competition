@@ -12,7 +12,7 @@ const Footer = () => (
     <section class="ft-logo">
       <div>
         <a href="https://omar.house.gov/" title="Representative Ilhan Omar.">
-          <img src="https://omar.house.gov/sites/omar.house.gov/files/logo_0.png" alt="Representative Ilhan Omar."/>
+          <img src="https://omar.house.gov/sites/omar.house.gov/files/logo_0.png" alt="Representative Ilhan Omar." class="logo"/>
         </a>
       </div>
     </section>
