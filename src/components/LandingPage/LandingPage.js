@@ -5,7 +5,8 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import { Header, Card, Image, Button, Modal } from "semantic-ui-react";
+import { Card, Button } from "semantic-ui-react";
+import ModalCard from "../ModalCard/ModalCard";
 
 import { connect } from "react-redux";
 
@@ -28,22 +29,7 @@ class LandingPage extends Component {
               <Card.Group stackable="true" centered="true">
                 {this.props.reduxState.setArt.map((item) => {
                   return (
-                    <Modal closeIcon
-                        trigger={
-                            <Card>
-                                <Image src={item.image_url} />
-                                <Card.Content textAlign="right">
-                                    <Card.Header>{item.title}</Card.Header>
-                                    <Card.Description>{item.artist}</Card.Description>
-                                </Card.Content>
-                            </Card>
-                    }>
-                        <Modal.Content image className="artwork-popup">
-                            <Image wrapped-size="medium" src={item.image_url}/>
-                            <Header>{item.title}</Header>
-                            <p>by {item.artist}</p>
-                        </Modal.Content>
-                    </Modal>
+                    <ModalCard item={item}/>
                   );
                 })}
               </Card.Group>
