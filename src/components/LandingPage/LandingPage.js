@@ -5,11 +5,14 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import { Card, Image, Button } from "semantic-ui-react";
+import { Card, Image, Button, Modal, Header } from "semantic-ui-react";
 
 import { connect } from "react-redux";
 
 import './LandingPage.css';
+
+//components
+import VoteButtonModal from '../VoteButtonModal/VoteButtonModal';
 
 class LandingPage extends Component {
     componentDidMount() {
@@ -22,7 +25,7 @@ class LandingPage extends Component {
         return (
           <div className="landing-page-wrapper">
             <div className="vote-button">
-              <Button size="large">Cast Your Vote!</Button>
+              <VoteButtonModal />
             </div>
             <div className="art-grid-wrapper">
               <Card.Group stackable="true" centered="true">
@@ -40,7 +43,7 @@ class LandingPage extends Component {
               </Card.Group>
             </div>
             <div className="vote-button">
-              <Button size="large">Cast Your Vote!</Button>
+              <VoteButtonModal />
             </div>
           </div>
         );
