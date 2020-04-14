@@ -30,12 +30,6 @@ const Footer = () => (
           <li><a href="#"><i class="fa fa-instagram"></i></a></li>
         </ul>
     </section>
-
-    <section class="ft-legal">
-      <p>
-        &copy; Prime Digital Academy
-      </p>
-    </section>
   </footer>
 );
 
