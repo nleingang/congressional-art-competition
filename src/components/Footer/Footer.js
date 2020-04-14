@@ -1,5 +1,6 @@
 import React from 'react';
-import './Footer.css'
+import './Footer.css';
+import logo from './logo_0.png';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -8,7 +9,36 @@ import './Footer.css'
 
 const Footer = () => (
   <footer>
-    &copy; Prime Digital Academy
+
+    <section class="ft-logo">
+      <div>
+        <a href="https://omar.house.gov/" title="Representative Ilhan Omar.">
+          <img src={logo} alt="Representative Ilhan Omar." class="logo"/>
+        </a>
+      </div>
+    </section>
+
+    <section class="ft-main">
+      <ul class="ft-links">
+        <li><a href="#">link</a></li>
+        <li><a href="#">link</a></li>
+        <li><a href="#">link</a></li>
+      </ul>
+      <ul class="ft-links">
+        <li><a href="#">link</a></li>
+        <li><a href="#">link</a></li>
+        <li><a href="#">link</a></li>
+      </ul>
+    </section>
+
+    <section class="ft-social">
+      <ul class="ft-social-list">
+          <li><a href="https://twitter.com/Ilhan"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+    </section>
   </footer>
 );
 

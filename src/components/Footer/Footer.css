@@ -1,3 +1,99 @@
 footer {
-    margin-top: 80px;
+    background-color: #222;
+    color: white;
+    /* line-height: 1.5; */
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+    display: flex; 
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+}
+
+footer > section {
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Size of items defined inside items */
+    text-align: center;
+    padding: 1.25em;
+}
+
+footer a {
+    text-decoration: none;
+    color:white;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: rgb(206, 15, 24)
+}
+
+.ft-logo {
+    width: 27vw;
+    justify-content: space-around;
+}
+
+.logo /* the img tag */ {
+    max-width: 25vw;
+    width: 258px;
+    max-height: 4em;
+    padding-left: 1.5em;
+}
+
+.ft-main {
+    width: 50%;
+    padding: 0;
+}
+
+.ft-links {
+    /* display: flex; */
+    justify-content: space-around;
+    width: 50%;
+    list-style: none;
+    /* border: 1px dotted white; */
+}
+
+.ft-links li {
+    width: 100%;
+}
+
+.ft-social {
+    display: flex;
+    width: 23vw;
+}
+
+.ft-social-list {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    /* border-left: 1px #777 solid; */
+    padding-left: 0;
+}
+
+.ft-social-list li {
+    margin: 0.5rem;
+    padding: 0 .5rem;
+    font-size: 1.25rem;
+}
+
+/* .ft-title {
+    color: #eee;
+    font-size: 1.375rem;
+    padding-bottom: 0.625rem;
+} */
+
+/* adjustments for mobile views */
+@media only screen and (max-width: 400px) {
+    .logo {
+        max-width: 90vw;
+    }
+
+    footer>section {
+        width: 100%;
+        padding: 2em;
+        justify-content: center!important;
+    }
 }
