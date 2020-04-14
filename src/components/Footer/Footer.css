@@ -8,6 +8,7 @@ footer {
     display: flex; 
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-top: 2.5rem;
 }
 
 footer > section {
@@ -37,9 +38,9 @@ a:hover {
 
 .logo /* the img tag */ {
     max-width: 25vw;
-    width: auto;
+    width: 258px;
     max-height: 4em;
-    padding-left: 1em;
+    padding-left: 1.5em;
 }
 
 .ft-main {
