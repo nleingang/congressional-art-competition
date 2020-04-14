@@ -1,7 +1,18 @@
 .landing-page-wrapper {
     display: flex;
+    flex-direction: column;
+}
+
+.art-grid-wrapper {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
     justify-content: space-evenly;
+}
+
+.vote-button {
+    text-align: center;
 }

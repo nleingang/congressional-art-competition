@@ -5,7 +5,7 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import { Card, Image } from "semantic-ui-react";
+import { Card, Image, Button } from "semantic-ui-react";
 
 import { connect } from "react-redux";
 
@@ -20,21 +20,30 @@ class LandingPage extends Component {
 
     render() {
         return (
-            <div className="landing-page-wrapper">
-                {this.props.reduxState.setArt.map(item => {
-                    return (
-                        <Card>
-                            <Image src={item.image_url} />
-                            <Card.Content textAlign="right">
-                                <Card.Header>{item.title}</Card.Header>
-                                <Card.Description>{item.artist}</Card.Description>
-                            </Card.Content>
-                        </Card>
-                        )}
-                    )
-                }
+          <div className="landing-page-wrapper">
+            <div className="vote-button">
+              <Button size="large">Cast Your Vote!</Button>
             </div>
-        )
+            <div className="art-grid-wrapper">
+              <Card.Group stackable="true" centered="true">
+                {this.props.reduxState.setArt.map((item) => {
+                  return (
+                    <Card>
+                      <Image src={item.image_url} />
+                      <Card.Content textAlign="right">
+                        <Card.Header>{item.title}</Card.Header>
+                        <Card.Description>{item.artist}</Card.Description>
+                      </Card.Content>
+                    </Card>
+                  );
+                })}
+              </Card.Group>
+            </div>
+            <div className="vote-button">
+              <Button size="large">Cast Your Vote!</Button>
+            </div>
+          </div>
+        );
     }
 }
 
