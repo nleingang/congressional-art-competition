@@ -16,3 +16,8 @@
 .vote-button {
     text-align: center;
 }
+
+.artwork-popup {
+    flex-direction: column!important;
+    text-align: right;
+}
