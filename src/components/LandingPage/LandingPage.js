@@ -12,6 +12,9 @@ import { connect } from "react-redux";
 
 import './LandingPage.css';
 
+//components
+import VoteButtonModal from '../VoteButtonModal/VoteButtonModal';
+
 class LandingPage extends Component {
     componentDidMount() {
         this.props.dispatch({
@@ -23,7 +26,7 @@ class LandingPage extends Component {
         return (
           <div className="landing-page-wrapper">
             <div className="vote-button">
-              <Button size="large">Cast Your Vote!</Button>
+              <VoteButtonModal />
             </div>
             <div className="art-grid-wrapper">
               <Card.Group stackable="true" centered="true">
@@ -36,7 +39,7 @@ class LandingPage extends Component {
               
             </div>
             <div className="vote-button">
-              <Button size="large">Cast Your Vote!</Button>
+              <VoteButtonModal />
             </div>
           </div>
         );
