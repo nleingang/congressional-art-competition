@@ -1,6 +1,6 @@
 footer {
     background-color: #222;
-    color: #eee;
+    color: white;
     /* line-height: 1.5; */
     /* position: absolute; */
     bottom: 0;
@@ -14,6 +14,7 @@ footer > section {
     display: flex;
     flex: 1 1 auto;
     flex-wrap: wrap;
+    justify-content: space-around;
     /* Size of items defined inside items */
     text-align: center;
     padding: 1.25em;
@@ -21,7 +22,7 @@ footer > section {
 
 footer a {
     text-decoration: none;
-    color: #eee;
+    color:white;
 }
 
 a:hover {
@@ -29,22 +30,38 @@ a:hover {
     color: rgb(206, 15, 24)
 }
 
+.ft-logo {
+    width: 27vw;
+    justify-content: space-around;
+}
+
 .logo /* the img tag */ {
     max-width: 25vw;
     width: auto;
     max-height: 4em;
-}
-
-.ft-logo {
-    justify-content: left;
+    padding-left: 1em;
 }
 
 .ft-main {
     width: 50%;
+    padding: 0;
+}
+
+.ft-links {
+    /* display: flex; */
+    justify-content: space-around;
+    width: 50%;
+    list-style: none;
+    /* border: 1px dotted white; */
+}
+
+.ft-links li {
+    width: 100%;
 }
 
 .ft-social {
-    justify-content: right;
+    display: flex;
+    width: 23vw;
 }
 
 .ft-social-list {
@@ -52,11 +69,12 @@ a:hover {
     justify-content: space-around;
     list-style: none;
     /* border-left: 1px #777 solid; */
-    /* padding-left: 1.25rem; */
+    padding-left: 0;
 }
 
 .ft-social-list li {
     margin: 0.5rem;
+    padding: 0 .5rem;
     font-size: 1.25rem;
 }
 
@@ -75,5 +93,6 @@ a:hover {
     footer>section {
         width: 100%;
         padding: 2em;
+        justify-content: center!important;
     }
 }
