@@ -1,11 +1,11 @@
 footer {
     background-color: #222;
     color: #eee;
-    line-height: 1.5;
-    position: absolute;
+    /* line-height: 1.5; */
+    /* position: absolute; */
     bottom: 0;
     width: 100%;
-    display: flex;
+    display: flex; 
     justify-content: space-around;
     flex-wrap: wrap;
 }
@@ -16,7 +16,7 @@ footer > section {
     flex-wrap: wrap;
     /* Size of items defined inside items */
     text-align: center;
-    justify-content: center;
+    padding: 1.25em;
 }
 
 footer a {
@@ -30,19 +30,22 @@ a:hover {
 }
 
 .logo /* the img tag */ {
-    width: 25vw;
-    height: auto;
+    max-width: 25vw;
+    width: auto;
+    max-height: 4em;
 }
 
-@media only screen and (max-width: 400px) {
-    .logo {
-        width: 100vw;
-    }
+.ft-logo {
+    justify-content: left;
 }
 
-/* .ft-social {
-    padding: 0 1.875rem 1.25rem;
-} */
+.ft-main {
+    width: 50%;
+}
+
+.ft-social {
+    justify-content: right;
+}
 
 .ft-social-list {
     display: flex;
@@ -62,3 +65,15 @@ a:hover {
     font-size: 1.375rem;
     padding-bottom: 0.625rem;
 } */
+
+/* adjustments for mobile views */
+@media only screen and (max-width: 400px) {
+    .logo {
+        max-width: 90vw;
+    }
+
+    footer>section {
+        width: 100%;
+        padding: 2em;
+    }
+}

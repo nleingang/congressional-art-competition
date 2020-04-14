@@ -1,5 +1,6 @@
 import React from 'react';
-import './Footer.css'
+import './Footer.css';
+import logo from './logo_0.png';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -12,7 +13,7 @@ const Footer = () => (
     <section class="ft-logo">
       <div>
         <a href="https://omar.house.gov/" title="Representative Ilhan Omar.">
-          <img src="https://omar.house.gov/sites/omar.house.gov/files/logo_0.png" alt="Representative Ilhan Omar." class="logo"/>
+          <img src={logo} alt="Representative Ilhan Omar." class="logo"/>
         </a>
       </div>
     </section>
