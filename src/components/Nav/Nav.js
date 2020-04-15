@@ -13,15 +13,28 @@ const Nav = (props) => (
       </Link>
     </div>
     <div className="nav-right">
-      <ul>
-        <li>About</li>
-        <li>Contact</li>
-        <li>Issues</li>
-        <li>Media</li>
-        <li>Services</li>
-        <li>Coronavirus</li>
+      <ul className="nav-links-ul">
+        <Link className="nav-link">
+          <li>About</li>
+        </Link>
+        <Link className="nav-link">
+          <li>Contact</li>
+        </Link>
+        <Link className="nav-link">
+          <li>Issues</li>
+        </Link>
+        <Link className="nav-link">
+          <li>Media</li>
+        </Link>
+        <Link className="nav-link">
+          <li>Services</li>
+        </Link>
+        <Link className="nav-link">
+          <li>Coronavirus</li>
+        </Link>
       </ul>
-      <a class="ft-social">
+
+      <div class="nav-social">
         <ul class="ft-social-list">
           <li>
             <a href="https://twitter.com/Ilhan">
@@ -44,7 +57,7 @@ const Nav = (props) => (
             </a>
           </li>
         </ul>
-      </a>
+      </div>
     </div>
   </div>
 );

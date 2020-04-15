@@ -18,26 +18,36 @@
   max-height: 4em;
 }
 
+.nav-links-ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
 .nav-link {
   float: left;
   color: #f2f2f2;
-  background-color: #00acb0;
   text-align: center;
-  padding: 24px 10px;
+  padding: 24px 20px;
   text-decoration: none;
   font-size: 15px;
-
-  /* these last two make the logout button in
-  the nav bar look like another link */
-  border: none;
-  cursor: pointer;
-  outline: 0;
 }
 
 .nav-link:hover {
-  background-color: #008183;
+  background-color:rgba(0, 0, 0, 0.1);
 }
 
 .nav-right {
-  float: right;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* Social Links */ 
+.nav-social .ft-social-list li a {
+  color: white;
+}
+.nav-social .ft-social-list li a:hover{
+  color: rgb(206, 15, 24);
 }
