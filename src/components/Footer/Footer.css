@@ -1,3 +1,28 @@
+/* adjustments for mobile views */
+/* OVERRIDES VARIOUS DESKTOP STYLES */
+@media only screen and (max-width: 760px) {
+    .logo {
+        max-width: 90vw;
+        padding: 0 !important;
+    }
+
+    .ft-links {
+        width: 100vw;
+        margin: 0;
+        padding: 0 !important;
+    }
+
+    .ft-links li {
+        padding: .175rem;
+    }
+
+    footer>section {
+        width: 100vw !important;
+        padding: 2em;
+        justify-content: center !important;
+    }
+}
+
 footer {
     background-color: #222;
     color: white;
@@ -84,25 +109,3 @@ a:hover {
     font-size: 1.375rem;
     padding-bottom: 0.625rem;
 } */
-
-/* adjustments for mobile views */
-@media only screen and (max-width: 400px) {
-    .logo {
-        max-width: 90vw;
-        padding: 0!important;
-    }
-    .ft-links {
-        width: 100vw;
-        margin: 0;
-        padding: 0!important;
-    }
-    .ft-links li {
-        padding: .175rem;
-    }
-
-    footer>section {
-        width: 100vw!important;
-        padding: 2em;
-        justify-content: center!important;
-    }
-}
