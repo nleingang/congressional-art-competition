@@ -21,11 +21,17 @@ CREATE TABLE "artwork"
     "id" SERIAL PRIMARY KEY,
     "title" VARCHAR,
     "artist" VARCHAR,
-    "image_url" VARCHAR,
-    "first_place_votes" INT,
-    "second_place_votes" INT,
-    "third_place_votes" INT
+    "image_url" VARCHAR
 );
+
+CREATE TABLE "votes"
+(
+    "id" SERIAL PRIMARY KEY,
+    "first_place" INT REFERENCES artwork(id),
+    "second_place" INT REFERENCES artwork(id),
+    "third_place" INT REFERENCES artwork(id)
+);
+
 INSERT INTO artwork
     (title, artist, image_url)
 VALUES
