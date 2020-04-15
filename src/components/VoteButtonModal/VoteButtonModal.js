@@ -12,6 +12,13 @@ class VoteButtonModal extends Component {
 
   handleClose = () => this.setState({ modalOpen: false });
 
+  triggerVoteMode = () => {
+    this.props.dispatch({
+      type: "SET_VOTE_MODE"
+    });
+    // this.handleClose; THIS MIGHT NOT BE NECESSARY IF CHANGING STATE CAUSES A RE-RENDER
+  }
+
   render() {
     return (
       <Modal
