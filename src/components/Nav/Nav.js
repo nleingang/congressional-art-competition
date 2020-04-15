@@ -2,33 +2,62 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import logo from './logo_0.png';
 import './Nav.css';
 
 const Nav = (props) => (
   <div className="nav">
-    <Link to="/home">
-      <h2 className="nav-title">Prime Solo Project</h2>
-    </Link>
+    <div className="logo-img-wrapper">
+      <Link to="/">
+        <img src={logo} alt="Representative Ilhan Omar" class="nav-logo" />
+      </Link>
+    </div>
     <div className="nav-right">
-      <Link className="nav-link" to="/home">
-        {/* Show this link if they are logged in or not,
-        but call this link 'Home' if they are logged in,
-        and call this link 'Login / Register' if they are not */}
-        {props.user.id ? 'Home' : 'Login / Register'}
-      </Link>
-      {/* Show the link to the info page and the logout button if the user is logged in */}
-      {props.user.id && (
-        <>
-          <Link className="nav-link" to="/info">
-            Info Page
-          </Link>
-          <LogOutButton className="nav-link"/>
-        </>
-      )}
-      {/* Always show this link since the about page is not protected */}
-      <Link className="nav-link" to="/about">
-        About
-      </Link>
+      <ul className="nav-links-ul">
+        <Link className="nav-link">
+          <li>About</li>
+        </Link>
+        <Link className="nav-link">
+          <li>Contact</li>
+        </Link>
+        <Link className="nav-link">
+          <li>Issues</li>
+        </Link>
+        <Link className="nav-link">
+          <li>Media</li>
+        </Link>
+        <Link className="nav-link">
+          <li>Services</li>
+        </Link>
+        <Link className="nav-link">
+          <li>Coronavirus</li>
+        </Link>
+      </ul>
+
+      <div class="nav-social">
+        <ul class="ft-social-list">
+          <li>
+            <a href="https://twitter.com/Ilhan">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-youtube"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-instagram"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 );
