@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Header, Modal, Button, Icon } from "semantic-ui-react";
 
+import { connect } from 'react-redux';
+
 import './VoteButtonModal.css';
 
 class VoteButtonModal extends Component {
@@ -16,7 +18,9 @@ class VoteButtonModal extends Component {
     this.props.dispatch({
       type: "SET_VOTE_MODE"
     });
-    // this.handleClose; THIS MIGHT NOT BE NECESSARY IF CHANGING STATE CAUSES A RE-RENDER
+    console.log('function working')
+    this.handleClose(); 
+    // THIS MIGHT NOT BE NECESSARY IF CHANGING STATE CAUSES A RE-RENDER
   }
 
   render() {
@@ -59,7 +63,7 @@ class VoteButtonModal extends Component {
           </Modal.Description>
           <Modal.Actions>
             <div className="got-it">
-              <Button onClick={this.handleClose} positive>
+              <Button onClick={this.triggerVoteMode} positive>
                 <Icon name="checkmark" /> Got it!
               </Button>
             </div>
@@ -70,4 +74,8 @@ class VoteButtonModal extends Component {
   }
 }
 
-export default VoteButtonModal;
+const mapReduxStateToProps = (reduxState) => ({
+  reduxState,
+});
+
+export default connect(mapReduxStateToProps)(VoteButtonModal);
