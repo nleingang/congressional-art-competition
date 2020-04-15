@@ -18,6 +18,7 @@
 }
 
 .artwork-popup {
-    flex-direction: column!important;
+    flex-direction: column!important; 
+    /* OVERRIDES SEMANTIC-UI MODAL DEFAULT FLEX-DIRECTION: ROW */
     text-align: right;
 }
