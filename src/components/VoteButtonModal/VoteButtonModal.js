@@ -18,9 +18,7 @@ class VoteButtonModal extends Component {
     this.props.dispatch({
       type: "SET_VOTE_MODE"
     });
-    console.log('function working')
     this.handleClose(); 
-    // THIS MIGHT NOT BE NECESSARY IF CHANGING STATE CAUSES A RE-RENDER
   }
 
   render() {
