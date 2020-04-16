@@ -7,6 +7,7 @@ import './AdminPortal.css';
 // components
 import AdminHeader from '../AdminHeader/AdminHeader';
 import AdminUpload from '../AdminUpload/AdminUpload';
+import AdminVotes from '../AdminVotes/AdminVotes';
 
 
 class LandingPage extends Component {
@@ -21,25 +22,18 @@ class LandingPage extends Component {
         return (
             <div class="admin-portal-wrapper">
 
-                <AdminHeader/>
+                <AdminHeader />
 
-                <AdminUpload/>
-            
-                <section class="admin-votes">
-                    <h2>Votes</h2>
-                    <div class="chart-wrapper">
-                        {/* jsChart goes here */}
-                    </div>
-                    <div>
-                        <button class="ui button">Download CSV</button>
-                    </div>
-                </section>
+                <AdminUpload />
 
+                <AdminVotes />
+                
                 <section class="admin-edit">
                     <div>
                         <button class="ui button">Edit Images</button>
                     </div>
                 </section>
+                
             </div>
         );
     }
