@@ -42,3 +42,14 @@
 .text-inputs label {
     padding-right: 1rem;
 }
+
+.chart-wrapper {
+    width: 90%;
+    height: 300px;
+    border: 1px dotted black;
+    margin: .5rem auto;
+}
+
+.ui.button {
+    margin: .5rem 0;
+}

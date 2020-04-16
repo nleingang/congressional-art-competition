@@ -22,20 +22,20 @@ class LandingPage extends Component {
     render() {
 
         return (
-          <div class="admin-portal-wrapper">
+            <div class="admin-portal-wrapper">
 
-              <section class="admin-header">
+                <section class="admin-header">
                 <h1>Admin Portal</h1>
                 <h4 class="user-greeting">Welcome, { this.props.reduxState.user.username }!</h4>
-              </section>
+                </section>
 
-              <section class="admin-upload">
+                <section class="admin-upload">
                 <h2>Image Upload</h2>
                 <div class="new-image-wrapper">
                     <div class="all-inputs">
                         <div>
                             <button class="ui button">
-                                <Icon name="arrow up" positive/>Upload
+                                <i class="arrow up icon" />Upload
                             </button>
                         </div>
                         <div class="text-inputs">
@@ -61,8 +61,24 @@ class LandingPage extends Component {
                         </button>
                     </div>
                 </div>
-              </section>
-          </div>
+                </section>
+            
+                <section class="admin-votes">
+                    <h2>Votes</h2>
+                    <div class="chart-wrapper">
+                        {/* jsChart goes here */}
+                    </div>
+                    <div>
+                        <button class="ui button">Download CSV</button>
+                    </div>
+                </section>
+
+                <section class="admin-edit">
+                    <div>
+                        <button class="ui button">Edit Images</button>
+                    </div>
+                </section>
+            </div>
         );
     }
 }
