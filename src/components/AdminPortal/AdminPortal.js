@@ -1,15 +1,11 @@
 import React, { Component } from "react";
-// import {
-//   HashRouter as Router,
-//   Route,
-//   Redirect,
-//   Switch,
-// } from "react-router-dom";
-import { Button, Icon } from "semantic-ui-react";
 
 import { connect } from "react-redux";
 
 import './AdminPortal.css';
+
+// components
+import AdminHeader from '../AdminHeader/AdminHeader';
 
 
 class LandingPage extends Component {
@@ -24,10 +20,7 @@ class LandingPage extends Component {
         return (
             <div class="admin-portal-wrapper">
 
-                <section class="admin-header">
-                <h1>Admin Portal</h1>
-                <h4 class="user-greeting">Welcome, { this.props.reduxState.user.username }!</h4>
-                </section>
+                <AdminHeader/>
 
                 <section class="admin-upload">
                 <h2>Image Upload</h2>
