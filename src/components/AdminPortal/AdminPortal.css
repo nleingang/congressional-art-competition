@@ -1,0 +1,55 @@
+.admin-portal-wrapper {
+    text-align: center;
+}
+
+.admin-portal-wrapper > section {
+    border: 1px dotted black;
+    margin: 0 0 2em;
+    padding: 1em;
+}
+
+.new-image-wrapper {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-image-wrapper > div {
+    width: 100%;
+    height: auto;
+}
+
+.all-inputs {
+    display: flex;
+    flex-direction: row;
+}
+
+.all-inputs > div {
+    width: 50%;
+    height: auto;
+    margin: auto;
+}
+
+.text-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-inputs > div {
+    padding: .5rem 0;
+}
+
+.text-inputs label {
+    padding-right: 1rem;
+}
+
+.chart-wrapper {
+    width: 90%;
+    height: 300px;
+    border: 1px dotted black;
+    margin: .5rem auto;
+}
+
+.ui.button {
+    margin: .5rem 0;
+}

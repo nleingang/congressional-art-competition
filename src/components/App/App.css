@@ -8,6 +8,7 @@ html {
 
 h1, .header {
     font-family: 'Permanent Marker', cursive!important;
+    font-size: 4em;
     /* OVERRIDES SEMANTIC-UI DEFAULT HEADER FONT */
 }
 
