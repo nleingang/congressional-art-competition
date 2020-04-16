@@ -47,6 +47,11 @@ class ArtCard extends Component {
             type: "CHECK_VOTE_CHOICES"
         });
         console.log(this.props.reduxState.voteChoicesReducer);
+        if  (this.props.reduxState.voteChoicesReducer.length === 3) {
+            this.props.dispatch({
+                type: "VOTE_SUBMISSION_MODAL_OPEN"
+            })
+        }
       };
 
   render() {

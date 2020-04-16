@@ -23,6 +23,12 @@ class LandingPage extends Component {
       });
     }
 
+    handleVoteSubmission = () => {
+      this.props.dispatch({
+        type: "SUBMIT_VOTE",
+        payload: this.props.reduxState.voteChoicesReducer
+      })
+    }
     render() {
 
         return (
@@ -49,6 +55,8 @@ class LandingPage extends Component {
             <div className="vote-button">
               <VoteButtonModal />
             </div>
+            {/* temporary vote submission button; delete when triggering modal for real */}
+            {this.props.reduxState.voteSubmissionModalReducer ? <Button onClick={this.handleVoteSubmission}>Submit</Button> : <></>}
           </div>
         );
     }
