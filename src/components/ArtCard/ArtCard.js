@@ -7,33 +7,51 @@ import { connect } from "react-redux";
 
 class ArtCard extends Component {
   handleVoteClick = (event) => {
-    if(this.checkIfClicked(event.target.value)) {
-        return this.removeChoice(event.target.value);
+    if (this.checkIfClicked(event.target.value)) {
+      return this.removeChoice(event.target.value);
     } else {
-        return this.addChoice(event.target.value);
+      return this.addChoice(event.target.value);
     }
-    
   };
 
   checkIfClicked = (id) => {
-      this.props.dispatch({
-          type: "CHECK_VOTE_CHOICES"
-      });
-      let choices = this.props.reduxState.voteChoicesReducer;
-      if (Object.values(choices).includes(id)) {
-        return true;
-      } else {
-        return false;
-      }
-  }
+    this.props.dispatch({
+      type: "CHECK_VOTE_CHOICES",
+    });
+    let choices = this.props.reduxState.voteChoicesReducer;
+    if (Object.values(choices).includes(id)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   removeChoice = (id) => {
-      console.log('this will remove ' + id);
-  }
+    console.log("this will remove " + id);
+  };
 
   addChoice = (id) => {
-      console.log('this will add ' + id);
-  }
+    if (
+      !this.props.reduxState.voteChoicesReducer.firstPlace &&
+      !this.props.reduxState.voteChoicesReducer.secondPlace &&
+      !this.props.reduxState.voteChoicesReducer.thirdPlace
+    ) {
+      this.props.dispatch({
+        type: "ADD_FIRST_VOTE",
+        payload: id,
+      });
+    }
+    else if (
+        this.props.reduxState.voteChoicesReducer.firstPlace &&
+        !this.props.reduxState.voteChoicesReducer.secondPlace &&
+        !this.props.reduxState.voteChoicesReducer.thirdPlace
+    ) {
+        this.props.dispatch({
+            type: "ADD_SECOND_VOTE",
+            payload: id
+        })
+    };
+  };
 
   render() {
     return (
