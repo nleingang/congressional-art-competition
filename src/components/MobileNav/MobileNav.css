@@ -1,0 +1,62 @@
+.mobile-nav {
+  overflow: hidden;
+  background-color: #3f8ade;
+  display: flex;
+  flex-direction: row;
+  padding: 0 2em;
+}
+
+.logo-img-wrapper {
+  margin: 1rem 0;
+  padding: 1rem 2rem;
+  width: 70vw;
+}
+
+.mobile-nav-logo {
+  width: 65vw;
+  height: auto;
+}
+
+.mobile-nav-links-ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.mobile-nav-link {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 24px 20px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.mobile-nav-link:hover {
+  background-color:rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav-right {
+  display: flex;
+  flex-direction: row;
+  width: 30vw;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* OVERRIDES SEMANTIC UI DEFAULT BUTTON STYLES */
+.mobile-menu {
+  background-color: #3f8ade!important; 
+  color: white!important;
+}
+
+.mobile-menu i.icon {
+  font-size: 1.5em;
+}
+
+/* Social Links */ 
+.mobile-nav-social .ft-social-list li a {
+  color: white;
+}
+.mobile-nav-social .ft-social-list li a:hover{
+  color: rgb(206, 15, 24);
+}
