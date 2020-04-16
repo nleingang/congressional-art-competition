@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import AdminPortal from '../AdminPortal/AdminPortal';
+import MobileNav from '../MobileNav/MobileNav';
 
 import './App.css';
 
@@ -30,6 +31,7 @@ class App extends Component {
     return (
       <Router>
         <Nav />
+        <MobileNav />
         <div class="container-wrapper">
           <div class="container">
             <Switch>
