@@ -6,11 +6,6 @@ import { connect } from "react-redux";
 // import './ModalCard.css';
 
 class ModalCard extends Component {
-    componentDidMount() {
-        this.props.dispatch({
-            type: "GET_ALL_ART"
-        });
-    }
 
     render() {
         return (
