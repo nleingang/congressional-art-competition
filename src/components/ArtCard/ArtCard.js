@@ -19,39 +19,35 @@ class ArtCard extends Component {
       type: "CHECK_VOTE_CHOICES",
     });
     let choices = this.props.reduxState.voteChoicesReducer;
-    if (Object.values(choices).includes(id)) {
-      return true;
+    if (choices.includes(id)) {
+        return true;
     } else {
-      return false;
+        return false;
     }
   };
 
   removeChoice = (id) => {
-    console.log("this will remove " + id);
+    if (this.props.reduxState.voteChoicesReducer[0] == id) {
+        this.props.reduxState.voteChoicesReducer.shift();
+    } else if (this.props.reduxState.voteChoicesReducer[1] == id) {
+        this.props.reduxState.voteChoicesReducer.splice(1,1);
+    } else {
+        this.props.reduxState.voteChoicesReducer.pop();
+    }
+    this.props.dispatch({
+        type: "CHECK_VOTE_CHOICES"
+    })
+    console.log(this.props.reduxState.voteChoicesReducer);
   };
 
   addChoice = (id) => {
-    if (
-      !this.props.reduxState.voteChoicesReducer.firstPlace &&
-      !this.props.reduxState.voteChoicesReducer.secondPlace &&
-      !this.props.reduxState.voteChoicesReducer.thirdPlace
-    ) {
+      console.log('this will add', id);
+      this.props.reduxState.voteChoicesReducer.push(id);
       this.props.dispatch({
-        type: "ADD_FIRST_VOTE",
-        payload: id,
-      });
-    }
-    else if (
-        this.props.reduxState.voteChoicesReducer.firstPlace &&
-        !this.props.reduxState.voteChoicesReducer.secondPlace &&
-        !this.props.reduxState.voteChoicesReducer.thirdPlace
-    ) {
-        this.props.dispatch({
-            type: "ADD_SECOND_VOTE",
-            payload: id
-        })
-    };
-  };
+            type: "CHECK_VOTE_CHOICES"
+        });
+        console.log(this.props.reduxState.voteChoicesReducer);
+      };
 
   render() {
     return (

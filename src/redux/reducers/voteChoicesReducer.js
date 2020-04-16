@@ -1,8 +1,4 @@
-const VoteChoicesReducer = (state = {
-    firstPlace: '',
-    secondPlace: '',
-    thirdPlace: ''
-}, action) => {
+const VoteChoicesReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_VOTE_CHOICES":
         console.log('reducer hit with', action.payload);
