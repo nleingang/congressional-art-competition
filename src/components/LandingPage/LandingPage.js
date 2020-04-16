@@ -35,7 +35,7 @@ class LandingPage extends Component {
                 {this.props.reduxState.setArt.map((item) => {
                   if(this.props.reduxState.voteMode){
                     return (
-                      <ArtCard item={item}/>
+                        <ArtCard item={item} />
                     );
                   } else {
                     return (
