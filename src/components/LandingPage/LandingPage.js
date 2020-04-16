@@ -23,12 +23,6 @@ class LandingPage extends Component {
       });
     }
 
-    
-
-    checkIfClicked = () => {
-
-    }
-
     render() {
 
         return (
