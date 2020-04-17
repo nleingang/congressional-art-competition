@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Header, Modal, Button, Icon } from "semantic-ui-react";
 
+import { connect } from 'react-redux';
+
 import './VoteButtonModal.css';
 
 class VoteButtonModal extends Component {
@@ -11,6 +13,13 @@ class VoteButtonModal extends Component {
   handleOpen = () => this.setState({ modalOpen: true });
 
   handleClose = () => this.setState({ modalOpen: false });
+
+  triggerVoteMode = () => {
+    this.props.dispatch({
+      type: "SET_VOTE_MODE"
+    });
+    this.handleClose(); 
+  }
 
   render() {
     return (
@@ -52,7 +61,7 @@ class VoteButtonModal extends Component {
           </Modal.Description>
           <Modal.Actions>
             <div className="got-it">
-              <Button onClick={this.handleClose} positive>
+              <Button onClick={this.triggerVoteMode} positive>
                 <Icon name="checkmark" /> Got it!
               </Button>
             </div>
@@ -63,4 +72,8 @@ class VoteButtonModal extends Component {
   }
 }
 
-export default VoteButtonModal;
+const mapReduxStateToProps = (reduxState) => ({
+  reduxState,
+});
+
+export default connect(mapReduxStateToProps)(VoteButtonModal);

@@ -3,14 +3,20 @@ import axios from "axios";
 
 function* voteSubmit(action) {
   try {
-    yield axios.post("/api/art/vote-submit", action.payload);
-    // console.log('redux saga hit with:', action.payload)
+     console.log("redux saga hit with:", action.payload);
+     let votes = {
+       firstChoiceId: action.payload[0],
+       secondChoiceId: action.payload[1],
+       thirdChoiceId: action.payload[2]
+     }
+     console.log(votes)
+    yield axios.post("/api/art/vote-submit", votes);
   } catch (error) {
     console.log("Error with vote submission:", error);
   }
 }
 
 function* voteSubmitSaga() {
-  yield takeEvery("ADD_NEW_ITEM", voteSubmit);
+  yield takeEvery("SUBMIT_VOTE", voteSubmit);
 }
 export default voteSubmitSaga;

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {
   HashRouter as Router,
   Route,
-  Redirect,
   Switch,
 } from 'react-router-dom';
 
@@ -17,6 +16,8 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
+import AdminPortal from '../AdminPortal/AdminPortal';
+import MobileNav from '../MobileNav/MobileNav';
 
 import './App.css';
 
@@ -29,6 +30,7 @@ class App extends Component {
     return (
       <Router>
         <Nav />
+        <MobileNav />
         <div class="container-wrapper">
           <div class="container">
             <Switch>
@@ -45,6 +47,9 @@ class App extends Component {
               {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
               <ProtectedRoute exact path="/info" component={InfoPage} />
+              {/* This works the same as the other protected route, except that if the user is logged in,
+            they will see the admin portal instead. */}
+              <ProtectedRoute exact path="/admin" component={AdminPortal} />
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />
             </Switch>

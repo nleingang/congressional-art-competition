@@ -8,6 +8,7 @@ html {
 
 h1, .header {
     font-family: 'Permanent Marker', cursive!important;
+    font-size: 4em;
     /* OVERRIDES SEMANTIC-UI DEFAULT HEADER FONT */
 }
 
@@ -72,4 +73,16 @@ input {
     margin: 0 50px;
     padding: 25px;
     background-color: white;
+}
+
+@media only screen and (max-width: 799px) {
+    .nav {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .mobile-nav {
+        display: none;
+    }
 }
