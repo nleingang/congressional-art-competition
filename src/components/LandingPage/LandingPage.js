@@ -56,7 +56,6 @@ class LandingPage extends Component {
             <div className="vote-button">
               <VoteButtonModal />
             </div>
-            {/* temporary vote submission button; delete when triggering modal for real */}
             {this.props.reduxState.voteSubmissionModalReducer ? <VoteSubmissionModal></VoteSubmissionModal> : <></>}
           </div>
         );

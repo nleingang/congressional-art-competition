@@ -69,6 +69,26 @@ class VoteSubmissionModal extends Component {
                 </Grid.Row>
               </Grid>
             </Segment>
+            <Grid columns={2} textAlign="center" stackable>
+              <Grid.Row>
+                <Grid.Column>
+                  <Input placeholder="Zip Code"></Input>
+                </Grid.Column>
+                <Grid.Column>
+                  <Input placeholder="Email"></Input>
+                </Grid.Column>
+              </Grid.Row>
+              </Grid>
+              <Grid columns={2} textAlign="center">
+              <Grid.Row>
+                <Grid.Column>
+                  <Button>Cancel</Button>
+                </Grid.Column>
+                <Grid.Column>
+                  <Button>Submit</Button>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Modal.Content>
         </Modal>
       </div>
