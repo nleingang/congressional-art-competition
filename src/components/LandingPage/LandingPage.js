@@ -7,10 +7,11 @@ import React, { Component } from "react";
 // } from "react-router-dom";
 import { Card, Button } from "semantic-ui-react";
 import ModalCard from "../ModalCard/ModalCard";
+import VoteSubmissionModal from "../VoteSubmissionModal/VoteSubmissionModal";
 
 import { connect } from "react-redux";
 
-import './LandingPage.css';
+import "./LandingPage.css";
 
 //components
 import VoteButtonModal from '../VoteButtonModal/VoteButtonModal';
@@ -55,8 +56,7 @@ class LandingPage extends Component {
             <div className="vote-button">
               <VoteButtonModal />
             </div>
-            {/* temporary vote submission button; delete when triggering modal for real */}
-            {this.props.reduxState.voteSubmissionModalReducer ? <Button onClick={this.handleVoteSubmission}>Submit</Button> : <></>}
+            {this.props.reduxState.voteSubmissionModalReducer ? <VoteSubmissionModal></VoteSubmissionModal> : <></>}
           </div>
         );
     }
