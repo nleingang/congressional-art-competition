@@ -14,37 +14,6 @@ import { connect } from "react-redux";
 import "./LandingPage.css";
 
 //components
-<<<<<<< HEAD
-import VoteButtonModal from "../VoteButtonModal/VoteButtonModal";
-
-class LandingPage extends Component {
-
-  componentDidMount() {
-    this.props.dispatch({
-      type: "GET_ALL_ART",
-    });
-  }
-
-  render() {
-    return (
-      <div className="landing-page-wrapper">
-        <div className="vote-button">
-          <VoteButtonModal />
-        </div>
-        <div className="art-grid-wrapper">
-          <Card.Group stackable="true" centered="true">
-            {this.props.reduxState.setArt.map((item) => {
-              return <ModalCard item={item} />;
-            })}
-          </Card.Group>
-        </div>
-        <div className="vote-button">
-          <VoteButtonModal />
-        </div>
-      </div>
-    );
-  }
-=======
 import VoteButtonModal from '../VoteButtonModal/VoteButtonModal';
 import ArtCard from '../ArtCard/ArtCard';
 
@@ -88,11 +57,10 @@ class LandingPage extends Component {
               <VoteButtonModal />
             </div>
             {/* temporary vote submission button; delete when triggering modal for real */}
-            {this.props.reduxState.voteSubmissionModalReducer ? <Button onClick={this.handleVoteSubmission}>Submit</Button> : <></>}
+            {this.props.reduxState.voteSubmissionModalReducer ? <VoteSubmissionModal></VoteSubmissionModal> : <></>}
           </div>
         );
     }
->>>>>>> master
 }
 
 const mapReduxStateToProps = (reduxState) => ({
