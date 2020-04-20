@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Image, Button } from "semantic-ui-react";
+import { Card, Image, Button, Dimmer } from "semantic-ui-react";
 
 import { connect } from "react-redux";
 
@@ -59,6 +59,8 @@ class ArtCard extends Component {
     }
   };
 
+  
+
   checkIfClicked = (id) => {
     this.props.dispatch({
       type: "CHECK_VOTE_CHOICES",
@@ -82,6 +84,7 @@ class ArtCard extends Component {
     } else {
         newState.pop();
     }
+    // this.calculateVoteRanks(newState);
     this.props.dispatch({ type: "SET_VOTE_CHOICES", payload: newState });
     this.disableOverlay();
   };
@@ -90,6 +93,7 @@ class ArtCard extends Component {
   addChoice = (id) => {
     let newState = this.props.reduxState.voteChoicesReducer;
     newState.push(id);
+    // this.calculateVoteRanks(newState);
     this.props.dispatch({ type: "SET_VOTE_CHOICES", payload: newState });
     this.activateOverlay();
       if (this.props.reduxState.voteChoicesReducer.length === 3) {
@@ -99,24 +103,38 @@ class ArtCard extends Component {
       }
   };
 
+  calculateVoteRanks = (newState) => {
+    console.log(newState);
+    let voteRankState = {
+      1: newState[0],
+      2: newState[1],
+      3: newState[2]
+    }
+    this.props.dispatch({
+      type: "SET_VOTE_RANKS",
+      payload: voteRankState
+    });
+  };
+
   render() {
     return (
       <>
-        <Card>
-            <div class={this.state.overlay}>
-              <div class="content">
-                <h2>{this.state.voteRank}</h2>
-              </div>
+        <Dimmer.Dimmable as={Card} dimmed={this.state.overlay}>
+          <Dimmer class={this.state.overlay}>
+            <div class="content">
+              <h2>{this.state.voteRank}</h2>
+              <Button onClick={this.handleVoteClick} value={this.props.item.id}>Remove Vote</Button>
             </div>
-            <Image src={this.props.item.image_url} />
-            <Card.Content textAlign="right">
-              <Card.Header>{this.props.item.title}</Card.Header>
-              <Card.Description>{this.props.item.artist}</Card.Description>
-            </Card.Content>
-        </Card>
-        <Button onClick={this.handleVoteClick} value={this.props.item.id}>
-          Vote
-        </Button>
+          </Dimmer>
+          <Image src={this.props.item.image_url} />
+          <Card.Content textAlign="right">
+            <Card.Header>{this.props.item.title}</Card.Header>
+            <Card.Description>{this.props.item.artist}</Card.Description>
+          </Card.Content>
+          <Button onClick={this.handleVoteClick} value={this.props.item.id}>
+            Vote
+          </Button>
+        </Dimmer.Dimmable>
       </>
     );
   }
