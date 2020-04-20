@@ -5,8 +5,20 @@ const router = express.Router();
 
 const { check, validationResult } = require('express-validator');
 
-// this will check the database to see if the email is already in use
-router.get("/", (req, res) => {
+// this will check if the email is an valid email
+// then it will go to the database to see if the email is already in use
+router.get("/",[
+    check('email').isEmail().normalizeEmail()
+], (req, res) => {
+
+    // throws an error if the email is not a valid email
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            errors: errors.array()
+        });
+    }
+
     pool.query(`
     SELECT email FROM voters WHERE email=$1
     `, [req.body.email])
@@ -28,38 +40,24 @@ router.get("/", (req, res) => {
 /**
  * POST route for new voter 
  */
-// router.post("/add", async (req, res, next) => {
-//     await check('email')
-//         .isEmail()
-//         .normalizeEmail()
-    
+router.post("/", (req, res) => {
 
-//     await 
-//              // end custom validation
-
-//     errors = validationResult(req);
-//     if (!errors.isEmpty()) {
-//         return res.status(422).json({
-//             errors: errors.array()
-//         });
-//     }
-
-//     console.log("voter route hit with req:", req.body);
-//     pool.query(
-//             `
-//   INSERT INTO "voters" ("email", "zip")
-//   VALUES ($1,$2);
-//   `,
-//             [req.body.email, req.body.zip]
-//         )
-//         .then((result) => {
-//             console.log(result);
-//             res.sendStatus(201);
-//         })
-//         .catch((error) => {
-//             console.log("error with adding voter:", error);
-//             res.sendStatus(500);
-//         });
-// });
+    console.log("voter route hit with req:", req.body);
+    pool.query(
+            `
+  INSERT INTO "voters" ("email", "zip")
+  VALUES ($1,$2);
+  `,
+            [req.body.email, req.body.zip]
+        )
+        .then((result) => {
+            console.log(result);
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log("error with adding voter:", error);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;
