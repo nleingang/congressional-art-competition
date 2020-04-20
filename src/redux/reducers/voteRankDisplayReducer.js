@@ -1,4 +1,4 @@
-const VoteRankDisplayReducer = (state = [], action) => {
+const VoteRankDisplayReducer = (state = {}, action) => {
   switch (action.type) {
     case "SET_VOTE_RANKS":
         console.log('reducer hit with', action.payload);
