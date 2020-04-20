@@ -42,7 +42,18 @@ const invalidEmail = (state = '', action) => {
       return 'This email address has already been used to vote.';
     default:
       return state;
-    }
+  }
+}
+
+const invalidZip = (state = '', action) => {
+  switch (action.type) {
+    case 'CLEAR_ZIP_ERROR':
+      return '';
+    case 'INVALID_ZIP':
+      return 'ZIP invalid';
+    default:
+      return state;
+  }
 }
 
 // make one object that has keys loginMessage, registrationMessage
@@ -51,5 +62,6 @@ const invalidEmail = (state = '', action) => {
 export default combineReducers({
   loginMessage,
   registrationMessage,
-  invalidEmail
+  invalidEmail,
+  invalidZip
 });
