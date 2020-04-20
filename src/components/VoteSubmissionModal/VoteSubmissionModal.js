@@ -45,6 +45,9 @@ class VoteSubmissionModal extends Component {
   }
 
   render() {
+
+    let errors = this.props.reduxState.errors;
+
     return (
       <div>
         <Modal open={this.state.modalOpen}>
@@ -96,12 +99,27 @@ class VoteSubmissionModal extends Component {
                   />
                 </Grid.Column>
                 <Grid.Column>
-                  <Input 
-                    type="email"
-                    placeholder="Email"
-                    value={this.state.email}
-                    onChange={this.handleChange('email')}
-                  />
+                  { errors.invalidEmail !== '' ? 
+                    <>
+                      <Input
+                        error
+                        type="email"
+                        placeholder="Email"
+                        value={this.state.email}
+                        onChange={this.handleChange('email')}
+                        />
+                      <Label>
+                        {errors.invalidEmail}
+                      </Label>
+                    </>
+                        :
+                    <Input
+                      type="email"
+                      placeholder="Email"
+                      value={this.state.email}
+                      onChange={this.handleChange('email')}
+                    />
+                  }
                 </Grid.Column>
               </Grid.Row>
               </Grid>
