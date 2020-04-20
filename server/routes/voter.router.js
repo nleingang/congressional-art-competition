@@ -7,11 +7,11 @@ const { check, validationResult } = require('express-validator');
 
 // this will check if the email is an valid email
 // then it will go to the database to see if the email is already in use
-router.get("/",[
-    check('email').isEmail().normalizeEmail()
+router.get("/:email", [
+    check('email').isEmail()
 ], (req, res) => {
-
-    // throws an error if the email is not a valid email
+        
+    // throws an error object if email is not valid
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({
@@ -21,15 +21,13 @@ router.get("/",[
 
     pool.query(`
     SELECT email FROM voters WHERE email=$1
-    `, [req.body.email])
+    `, [req.params.email])
         .then((result) => {
             console.log("this is the number of rows:", result.rows.length)
             if (result.rows.length != 0) {
-                res.send(true);
-                res.sendStatus(201);
+                res.send(true); 
             } else {
                 res.send(false);
-                res.sendStatus(500);
             }
         })
         .catch((error) => {

@@ -16,7 +16,18 @@ function* voteSubmit(action) {
   }
 }
 
+function* securityCheck(action) {
+  console.log(action.payload.email)
+  try {
+    const invalidEmail = yield axios.get('/api/voters/' + action.payload.email);
+    console.log("is email invalid?", invalidEmail)
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* voteSubmitSaga() {
   yield takeEvery("SUBMIT_VOTE", voteSubmit);
+  yield takeEvery("SECURITY_CHECK", securityCheck);
 }
 export default voteSubmitSaga;

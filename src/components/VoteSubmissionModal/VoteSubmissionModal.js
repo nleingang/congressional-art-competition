@@ -36,22 +36,12 @@ class VoteSubmissionModal extends Component {
     });
   }
 
-  checkEmail = (email) => {
-    // use to check if input email is a valid email format
-    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    if (re.test(this.state.email)) {
-      // email is valid
-      // send to server to check if email already exists in the database
-      console.log(this.state.email, 'is valid')
-    } else {
-      // email is invalid, send an error
-      console.log(this.state.email, 'is not valid')
-    }
-  }
-
   handleSubmit = () => {
-
+    console.log(this.state)
+    this.props.dispatch({
+      type: "SECURITY_CHECK",
+      payload: this.state
+    })
   }
 
   render() {
