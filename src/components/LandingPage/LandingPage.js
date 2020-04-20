@@ -22,6 +22,9 @@ class LandingPage extends Component {
       this.props.dispatch({
           type: "GET_ALL_ART"
       });
+      this.props.dispatch({
+        type: "CHECK_VOTE_CHOICES"
+      })
     }
 
     handleVoteSubmission = () => {
@@ -38,15 +41,21 @@ class LandingPage extends Component {
               <VoteButtonModal />
             </div>
             <div className="art-grid-wrapper">
-              <Card.Group stackable="true" centered="true">
+              <Card.Group stackable={true} centered={true}>
                 {this.props.reduxState.setArt.map((item) => {
                   if(this.props.reduxState.voteMode){
-                    return (
-                        <ArtCard item={item} />
-                    );
+                    if(this.props.reduxState.voteChoicesReducer.includes(item.id)){
+                      return (
+                        <ArtCard key={item.id} item={item} overlay="ui active dimmer"/>
+                      );
+                    } else {
+                      return (
+                        <ArtCard key={item.id} item={item} overlay="ui disabled dimmer"/>
+                      );
+                    }
                   } else {
                     return (
-                      <ModalCard item={item}/>
+                      <ModalCard key={item.id} item={item}/>
                     );
                   }
                 })}
