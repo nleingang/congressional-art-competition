@@ -20,8 +20,14 @@ function* securityCheck(action) {
   console.log(action.payload.email)
   try {
     const invalidEmail = yield axios.get('/api/voters/' + action.payload.email);
+    if (invalidEmail.data) {
+      yield put({ type: 'EMAIL_ALREADY_IN_USE' });
+    } else {
+      yield put({ type: 'CLEAR_EMAIL_ERROR' });
+    }
     console.log("is email invalid?", invalidEmail)
   } catch (error) {
+    yield put({ type: 'INVALID_EMAIL' });
     console.log(error);
   }
 }
