@@ -21,7 +21,7 @@ class VoteSubmissionModal extends Component {
   };
 
   getImageUrl = (id) => {
-    console.log(id);
+    // console.log(id);
     let sortArray = (e) => {
       return e.id == id;
     };
@@ -34,6 +34,20 @@ class VoteSubmissionModal extends Component {
       ...this.state,
       [prop]: event.target.value
     });
+  }
+
+  checkEmail = (email) => {
+    // use to check if input email is a valid email format
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (re.test(this.state.email)) {
+      // email is valid
+      // send to server to check if email already exists in the database
+      console.log(this.state.email, 'is valid')
+    } else {
+      // email is invalid, send an error
+      console.log(this.state.email, 'is not valid')
+    }
   }
 
   handleSubmit = () => {
