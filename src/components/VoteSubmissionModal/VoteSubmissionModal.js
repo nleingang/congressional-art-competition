@@ -39,9 +39,13 @@ class VoteSubmissionModal extends Component {
   handleSubmit = () => {
     console.log(this.state)
     this.props.dispatch({
-      type: "SECURITY_CHECK",
+      type: "EMAIL_SECURITY_CHECK",
       payload: this.state
-    })
+    });
+    this.props.dispatch({
+      type: "ZIP_SECURITY_CHECK",
+      payload: this.state
+    });
   }
 
   render() {
