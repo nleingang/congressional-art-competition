@@ -52,7 +52,6 @@ class ArtCard extends Component {
 
   handleVoteClick = (event) => {
     if (this.checkIfClicked(event.target.value)) {
-      console.log(event.target.value)
       return this.removeChoice(event.target.value);
     } else {
       return this.addChoice(event.target.value);
@@ -84,7 +83,7 @@ class ArtCard extends Component {
     } else {
         newState.pop();
     }
-    // this.calculateVoteRanks(newState);
+    this.calculateVoteRanks(newState);
     this.props.dispatch({ type: "SET_VOTE_CHOICES", payload: newState });
     this.disableOverlay();
   };
@@ -93,7 +92,7 @@ class ArtCard extends Component {
   addChoice = (id) => {
     let newState = this.props.reduxState.voteChoicesReducer;
     newState.push(id);
-    // this.calculateVoteRanks(newState);
+    this.calculateVoteRanks(newState);
     this.props.dispatch({ type: "SET_VOTE_CHOICES", payload: newState });
     this.activateOverlay();
       if (this.props.reduxState.voteChoicesReducer.length === 3) {
@@ -104,11 +103,14 @@ class ArtCard extends Component {
   };
 
   calculateVoteRanks = (newState) => {
-    console.log(newState);
+    console.log("calculate vote ranks new state is:", newState);
+    let first = newState[0];
+    let second = newState[1];
+    let third = newState[3];
     let voteRankState = {
-      1: newState[0],
-      2: newState[1],
-      3: newState[2]
+      [first]: 1,
+      [second]: 2,
+      [third]: 3
     }
     this.props.dispatch({
       type: "SET_VOTE_RANKS",
@@ -122,7 +124,7 @@ class ArtCard extends Component {
         <Dimmer.Dimmable as={Card} dimmed={this.state.overlay}>
           <Dimmer class={this.state.overlay}>
             <div class="content">
-              <h2>{this.state.voteRank}</h2>
+              <h2>{this.props.reduxState.voteRankDisplayReducer[this.props.item.id]}</h2>
               <Button onClick={this.handleVoteClick} value={this.props.item.id}>Remove Vote</Button>
             </div>
           </Dimmer>
