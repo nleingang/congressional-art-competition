@@ -96,11 +96,25 @@ class VoteSubmissionModal extends Component {
             <Grid columns={2} textAlign="center" stackable>
               <Grid.Row>
                 <Grid.Column>
-                  <Input 
-                    placeholder="Zip Code" 
-                    value={this.state.zip} 
-                    onChange={this.handleChange('zip')}
-                  />
+                  { errors.invalidZip !== '' ? 
+                    <>
+                      <Input 
+                        error
+                        placeholder="Zip Code" 
+                        value={this.state.zip} 
+                        onChange={this.handleChange('zip')}
+                      />
+                      <Label>
+                        {errors.invalidZip}
+                      </Label>
+                    </>
+                      :
+                    <Input 
+                      placeholder="Zip Code" 
+                      value={this.state.zip} 
+                      onChange={this.handleChange('zip')}
+                    />
+                  }
                 </Grid.Column>
                 <Grid.Column>
                   { errors.invalidEmail !== '' ? 
