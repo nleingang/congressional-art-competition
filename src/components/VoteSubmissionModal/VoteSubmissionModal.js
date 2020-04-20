@@ -16,6 +16,8 @@ import {
 class VoteSubmissionModal extends Component {
   state = {
     modalOpen: true,
+    zip: '',
+    email: ''
   };
 
   getImageUrl = (id) => {
@@ -26,6 +28,17 @@ class VoteSubmissionModal extends Component {
     let index = this.props.reduxState.setArt.find(sortArray);
     return index.image_url;
   };
+
+  handleChange = (prop) => (event) => {
+    this.setState({
+      ...this.state,
+      [prop]: event.target.value
+    });
+  }
+
+  handleSubmit = () => {
+
+  }
 
   render() {
     return (
@@ -72,10 +85,19 @@ class VoteSubmissionModal extends Component {
             <Grid columns={2} textAlign="center" stackable>
               <Grid.Row>
                 <Grid.Column>
-                  <Input placeholder="Zip Code"></Input>
+                  <Input 
+                    placeholder="Zip Code" 
+                    value={this.state.zip} 
+                    onChange={this.handleChange('zip')}
+                  />
                 </Grid.Column>
                 <Grid.Column>
-                  <Input placeholder="Email"></Input>
+                  <Input 
+                    type="email"
+                    placeholder="Email"
+                    value={this.state.email}
+                    onChange={this.handleChange('email')}
+                  />
                 </Grid.Column>
               </Grid.Row>
               </Grid>
@@ -85,7 +107,7 @@ class VoteSubmissionModal extends Component {
                   <Button>Cancel</Button>
                 </Grid.Column>
                 <Grid.Column>
-                  <Button>Submit</Button>
+                  <Button onClick={this.handleSubmit}>Submit</Button>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
