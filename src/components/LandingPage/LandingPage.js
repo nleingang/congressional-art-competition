@@ -16,6 +16,7 @@ import "./LandingPage.css";
 //components
 import VoteButtonModal from '../VoteButtonModal/VoteButtonModal';
 import ArtCard from '../ArtCard/ArtCard';
+import VoteSuccessModal from "../VoteSuccessModal/VoteSuccessModal";
 
 class LandingPage extends Component {
     componentDidMount() {
@@ -60,6 +61,8 @@ class LandingPage extends Component {
               <VoteButtonModal />
             </div>
             {this.props.reduxState.voteSubmissionModalReducer ? <VoteSubmissionModal></VoteSubmissionModal> : <></>}
+            {this.props.reduxState.voteSuccess ? <VoteSuccessModal/> : <></>}
+            {/* {this.props.reduxState.errors.invalidEmail === ''} */}
           </div>
         );
     }
