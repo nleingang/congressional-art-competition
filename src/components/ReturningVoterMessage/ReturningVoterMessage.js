@@ -15,7 +15,7 @@ class ReturningVoterMessage extends Component {
         <Modal size="mini" open={this.state.modalOpen}>
           <Modal.Content>
             <h4>
-              You have already voted and may not vote twice.
+              Our records indicate that you have already voted.
             </h4>
           </Modal.Content>
         </Modal>

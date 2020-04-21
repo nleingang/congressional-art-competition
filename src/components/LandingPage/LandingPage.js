@@ -61,6 +61,14 @@ class LandingPage extends Component {
             <div className="vote-button">
               <VoteButtonModal />
             </div>
+            {/* 
+              each of these modals display messages to the 
+              user based on the state of various reducers
+
+              the VoteSubmissionModal is opened when the user has selected three votes
+              the VoteSuccessModal is opened when email/zip are validated and the votes are submitted
+              the ReturningVoterMessage is displayed when the entered email has already been used
+            */}
             {this.props.reduxState.voteSubmissionModalReducer ? <VoteSubmissionModal></VoteSubmissionModal> : <></>}
             {this.props.reduxState.voteSuccess ? <VoteSuccessModal/> : <></>}
             {this.props.reduxState.errors.invalidEmail === 'email in use' ? <ReturningVoterMessage/> : <></>}
