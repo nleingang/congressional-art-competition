@@ -1,5 +1,7 @@
-import { takeEvery, put } from "redux-saga/effects";
+import { takeEvery, put, select } from "redux-saga/effects";
 import axios from "axios";
+import { getErrors } from '../selectors/getErrors';
+import { getVotes } from '../selectors/getVotes';
 
 const zipArray = [
     55305,
@@ -41,15 +43,23 @@ const zipArray = [
 ]
 
 function* voteSubmit(action) {
+
+  const arrayOfVotes = yield select(getVotes);
+  const errors = yield select(getErrors);
+  
+  const votes = {
+      firstChoiceId: arrayOfVotes[0],
+      secondChoiceId: arrayOfVotes[1],
+      thirdChoiceId: arrayOfVotes[2]
+    }
+
   try {
-     console.log("redux saga hit with:", action.payload);
-     let votes = {
-       firstChoiceId: action.payload[0],
-       secondChoiceId: action.payload[1],
-       thirdChoiceId: action.payload[2]
-     }
-     console.log(votes)
-    yield axios.post("/api/art/vote-submit", votes);
+    if (errors.invalidEmail === '' && errors.invalidEmail === '') {
+      yield axios.post("/api/art/vote-submit", votes);
+      yield axios.post("/api/voters", action.payload);
+    } else {
+      console.log('invalid email or zip');
+    }
   } catch (error) {
     console.log("Error with vote submission:", error);
   }
@@ -65,6 +75,7 @@ function* emailSecurityCheck(action) {
       yield put({ type: 'EMAIL_ALREADY_IN_USE' });
     } else {
       yield put({ type: 'CLEAR_EMAIL_ERROR' });
+      yield put({ type: 'SUBMIT_VOTE', payload: action.payload });
     }
   } catch (error) {
     yield put({ type: 'INVALID_EMAIL' });
