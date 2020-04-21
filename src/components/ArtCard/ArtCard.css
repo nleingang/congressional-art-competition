@@ -1,7 +1,7 @@
 /* OVERRIDE SEMANTIC DEFAULTS */
 .vote-btn {
     box-shadow: none!important;
-    border-top: 1px solid rgba(0, 0, 0, 0.6) !important;
+    border-top: 1px solid lightgray !important;
 }
 
 .vote-btn:hover {
