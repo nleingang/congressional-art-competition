@@ -19,16 +19,7 @@ const Footer = () => (
     </section>
 
     <section class="ft-main">
-      <ul class="ft-links">
-        <li><a href="#">link</a></li>
-        <li><a href="#">link</a></li>
-        <li><a href="#">link</a></li>
-      </ul>
-      <ul class="ft-links">
-        <li><a href="#">link</a></li>
-        <li><a href="#">link</a></li>
-        <li><a href="#">link</a></li>
-      </ul>
+      
     </section>
 
     <section class="ft-social">
