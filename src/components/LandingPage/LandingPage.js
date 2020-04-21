@@ -44,15 +44,9 @@ class LandingPage extends Component {
               <Card.Group stackable={true} centered={true}>
                 {this.props.reduxState.setArt.map((item) => {
                   if(this.props.reduxState.voteMode){
-                    if(this.props.reduxState.voteChoicesReducer.includes(item.id)){
                       return (
-                        <ArtCard key={item.id} item={item} overlay="ui active dimmer"/>
+                        <ArtCard key={item.id} item={item} />
                       );
-                    } else {
-                      return (
-                        <ArtCard key={item.id} item={item} overlay="ui disabled dimmer"/>
-                      );
-                    }
                   } else {
                     return (
                       <ModalCard key={item.id} item={item}/>
