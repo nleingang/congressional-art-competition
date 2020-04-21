@@ -8,7 +8,7 @@ import './Nav.css';
 const Nav = (props) => (
   <div className="nav">
     <div className="logo-img-wrapper">
-      <a to="/">
+      <a to="https://omar.house.gov/">
         <img src={logo} alt="Representative Ilhan Omar" class="nav-logo" />
       </a>
     </div>
@@ -16,31 +16,6 @@ const Nav = (props) => (
       <ul className="nav-links-ul">
         <NavLinks responsive="nav-link"/>
       </ul>
-
-      <div class="nav-social">
-        <ul class="ft-social-list">
-          <li>
-            <a href="https://twitter.com/Ilhan">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-youtube"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-instagram"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
 );

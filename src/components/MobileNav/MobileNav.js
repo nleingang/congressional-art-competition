@@ -10,9 +10,9 @@ const MobileNav = (props) => {
   return (
     <div className="mobile-nav">
       <div className="logo-img-wrapper">
-        <Link to="/">
+        <a href="https://omar.house.gov/">
           <img src={logo} alt="Representative Ilhan Omar" class="mobile-nav-logo" />
-        </Link>
+        </a>
       </div>
       <div className="mobile-nav-right">
         
