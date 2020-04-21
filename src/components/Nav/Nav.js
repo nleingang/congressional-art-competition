@@ -1,37 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import NavLinks from '../NavLinks/NavLinks';
 import logo from './logo_0.png';
 import './Nav.css';
 
 const Nav = (props) => (
   <div className="nav">
     <div className="logo-img-wrapper">
-      <Link to="/">
+      <a to="/">
         <img src={logo} alt="Representative Ilhan Omar" class="nav-logo" />
-      </Link>
+      </a>
     </div>
     <div className="nav-right">
       <ul className="nav-links-ul">
-        <Link className="nav-link">
-          <li>About</li>
-        </Link>
-        <Link className="nav-link">
-          <li>Contact</li>
-        </Link>
-        <Link className="nav-link">
-          <li>Issues</li>
-        </Link>
-        <Link className="nav-link">
-          <li>Media</li>
-        </Link>
-        <Link className="nav-link">
-          <li>Services</li>
-        </Link>
-        <Link className="nav-link">
-          <li>Coronavirus</li>
-        </Link>
+        <NavLinks responsive="nav-link"/>
       </ul>
 
       <div class="nav-social">
