@@ -51,9 +51,9 @@ footer a {
     color:white;
 }
 
-a:hover {
+a:hover  {
     text-decoration: underline;
-    color: rgb(206, 15, 24)
+    color: #ce0f18;
 }
 
 .ft-logo {
