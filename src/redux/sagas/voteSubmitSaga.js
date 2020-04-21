@@ -57,8 +57,9 @@ function* voteSubmit(action) {
     if (errors.invalidEmail === '' && errors.invalidEmail === '') {
       yield axios.post("/api/art/vote-submit", votes);
       yield axios.post("/api/voters", action.payload);
+      yield put({ type: 'VOTE_SUCCESS' });
     } else {
-      console.log('invalid email or zip');
+      yield put({ type: 'VOTE_FAILURE' });
     }
   } catch (error) {
     console.log("Error with vote submission:", error);
