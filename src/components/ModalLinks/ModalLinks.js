@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Modal } from 'semantic-ui-react'
+import { Modal } from 'semantic-ui-react';
+import NavLinks from '../NavLinks/NavLinks';
 
 
 class ModalLinks extends Component {
@@ -28,24 +28,7 @@ class ModalLinks extends Component {
       >
         <Modal.Content>
           <ul className="mobile-nav-links-ul">
-            <Link className="mobile-nav-link">
-              <li>About</li>
-            </Link>
-            <Link className="mobile-nav-link">
-              <li>Contact</li>
-            </Link>
-            <Link className="mobile-nav-link">
-              <li>Issues</li>
-            </Link>
-            <Link className="mobile-nav-link">
-              <li>Media</li>
-            </Link>
-            <Link className="mobile-nav-link">
-              <li>Services</li>
-            </Link>
-            <Link className="mobile-nav-link">
-              <li>Coronavirus</li>
-            </Link>
+            <NavLinks responsive="mobile-nav-link"/>
           </ul>
         </Modal.Content>
       </Modal>

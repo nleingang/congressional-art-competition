@@ -19,24 +19,15 @@ const Footer = () => (
     </section>
 
     <section class="ft-main">
-      <ul class="ft-links">
-        <li><a href="#">link</a></li>
-        <li><a href="#">link</a></li>
-        <li><a href="#">link</a></li>
-      </ul>
-      <ul class="ft-links">
-        <li><a href="#">link</a></li>
-        <li><a href="#">link</a></li>
-        <li><a href="#">link</a></li>
-      </ul>
+      
     </section>
 
     <section class="ft-social">
       <ul class="ft-social-list">
-          <li><a href="https://twitter.com/Ilhan"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="https://twitter.com/Ilhan"><i class="fa fa-twitter" title="Visit Ilhan on Twitter."></i></a></li>
+          <li><a href="http://www.facebook.com/RepIlhan/"><i class="fa fa-facebook" title="Visit RepIlhan on Facebook."></i></a></li>
+          <li><a href="http://www.youtube.com/channel/UC4meVUkgJUxyHE5CifWAumQ"><i class="fa fa-youtube" title="Visit RepIlhan on YouTube."></i></a></li>
+          <li><a href="http://instagram.com/repilhan/"><i class="fa fa-instagram" title="Visit repilhan on Instagram."></i></a></li>
         </ul>
     </section>
   </footer>
