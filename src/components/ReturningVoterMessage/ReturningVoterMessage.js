@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Modal } from "semantic-ui-react";
 
-class VoteSuccessModal extends Component {
+class ReturningVoterMessage extends Component {
   
   state = {
     modalOpen: true,
@@ -15,7 +15,7 @@ class VoteSuccessModal extends Component {
         <Modal size="mini" open={this.state.modalOpen}>
           <Modal.Content>
             <h4>
-              Thank you for voting!
+              You have already voted and may not vote twice.
             </h4>
           </Modal.Content>
         </Modal>
@@ -28,4 +28,4 @@ const mapReduxStateToProps = (reduxState) => ({
   reduxState,
 });
 
-export default connect(mapReduxStateToProps)(VoteSuccessModal);
+export default connect(mapReduxStateToProps)(ReturningVoterMessage);

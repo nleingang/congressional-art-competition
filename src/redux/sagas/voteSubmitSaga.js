@@ -58,6 +58,7 @@ function* voteSubmit(action) {
       yield axios.post("/api/art/vote-submit", votes);
       yield axios.post("/api/voters", action.payload);
       yield put({ type: 'VOTE_SUCCESS' });
+      yield put({ type: 'VOTE_SUBMISSION_MODAL_CLOSE'});
     } else {
       yield put({ type: 'VOTE_FAILURE' });
     }
@@ -74,6 +75,7 @@ function* emailSecurityCheck(action) {
     const invalidEmail = yield axios.get('/api/voters/' + newEmail);
     if (invalidEmail.data) {
       yield put({ type: 'EMAIL_ALREADY_IN_USE' });
+      yield put({ type: 'VOTE_SUBMISSION_MODAL_CLOSE'}); 
     } else {
       yield put({ type: 'CLEAR_EMAIL_ERROR' });
       yield put({ type: 'SUBMIT_VOTE', payload: action.payload });

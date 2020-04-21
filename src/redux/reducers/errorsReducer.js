@@ -39,7 +39,7 @@ const invalidEmail = (state = '', action) => {
     case 'INVALID_EMAIL':
       return 'Please enter a valid email address.';
     case 'EMAIL_ALREADY_IN_USE':
-      return 'This email address has already been used to vote.';
+      return 'email in use';
     default:
       return state;
   }
