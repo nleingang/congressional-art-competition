@@ -16,10 +16,12 @@ import {
 class VoteSubmissionModal extends Component {
   state = {
     modalOpen: true,
+    zip: '',
+    email: ''
   };
 
   getImageUrl = (id) => {
-    console.log(id);
+    // console.log(id);
     let sortArray = (e) => {
       return e.id == id;
     };
@@ -27,7 +29,29 @@ class VoteSubmissionModal extends Component {
     return index.image_url;
   };
 
+  handleChange = (prop) => (event) => {
+    this.setState({
+      ...this.state,
+      [prop]: event.target.value
+    });
+  }
+
+  handleSubmit = () => {
+    console.log(this.state)
+    this.props.dispatch({
+      type: "EMAIL_SECURITY_CHECK",
+      payload: this.state
+    });
+    this.props.dispatch({
+      type: "ZIP_SECURITY_CHECK",
+      payload: this.state
+    });
+  }
+
   render() {
+
+    let errors = this.props.reduxState.errors;
+
     return (
       <div>
         <Modal open={this.state.modalOpen}>
@@ -72,10 +96,48 @@ class VoteSubmissionModal extends Component {
             <Grid columns={2} textAlign="center" stackable>
               <Grid.Row>
                 <Grid.Column>
-                  <Input placeholder="Zip Code"></Input>
+                  { errors.invalidZip !== '' ? 
+                    <>
+                      <Input 
+                        error
+                        placeholder="Zip Code" 
+                        value={this.state.zip} 
+                        onChange={this.handleChange('zip')}
+                      />
+                      <Label>
+                        {errors.invalidZip}
+                      </Label>
+                    </>
+                      :
+                    <Input 
+                      placeholder="Zip Code" 
+                      value={this.state.zip} 
+                      onChange={this.handleChange('zip')}
+                    />
+                  }
                 </Grid.Column>
                 <Grid.Column>
-                  <Input placeholder="Email"></Input>
+                  { errors.invalidEmail !== '' ? 
+                    <>
+                      <Input
+                        error
+                        type="email"
+                        placeholder="Email"
+                        value={this.state.email}
+                        onChange={this.handleChange('email')}
+                        />
+                      <Label>
+                        {errors.invalidEmail}
+                      </Label>
+                    </>
+                        :
+                    <Input
+                      type="email"
+                      placeholder="Email"
+                      value={this.state.email}
+                      onChange={this.handleChange('email')}
+                    />
+                  }
                 </Grid.Column>
               </Grid.Row>
               </Grid>
@@ -85,7 +147,7 @@ class VoteSubmissionModal extends Component {
                   <Button>Cancel</Button>
                 </Grid.Column>
                 <Grid.Column>
-                  <Button>Submit</Button>
+                  <Button onClick={this.handleSubmit}>Submit</Button>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

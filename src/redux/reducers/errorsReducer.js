@@ -32,10 +32,36 @@ const registrationMessage = (state = '', action) => {
   }
 };
 
+const invalidEmail = (state = '', action) => {
+  switch (action.type) {
+    case 'CLEAR_EMAIL_ERROR':
+      return '';
+    case 'INVALID_EMAIL':
+      return 'Please enter a valid email address.';
+    case 'EMAIL_ALREADY_IN_USE':
+      return 'email in use';
+    default:
+      return state;
+  }
+}
+
+const invalidZip = (state = '', action) => {
+  switch (action.type) {
+    case 'CLEAR_ZIP_ERROR':
+      return '';
+    case 'INVALID_ZIP':
+      return 'ZIP invalid';
+    default:
+      return state;
+  }
+}
+
 // make one object that has keys loginMessage, registrationMessage
 // these will be on the redux state at:
 // state.errors.loginMessage and state.errors.registrationMessage
 export default combineReducers({
   loginMessage,
   registrationMessage,
+  invalidEmail,
+  invalidZip
 });

@@ -7,6 +7,7 @@ import voteMode from './voteModeReducer';
 import voteChoicesReducer from './voteChoicesReducer';
 import voteSubmissionModalReducer from './voteSubmissionModalReducer';
 import voteRankDisplayReducer from './voteRankDisplayReducer';
+import voteSuccess from './voteSuccess';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -15,14 +16,15 @@ import voteRankDisplayReducer from './voteRankDisplayReducer';
 // Lets make a bigger object for our store, with the objects from our reducers.
 // This is what we get when we use 'state' inside of 'mapStateToProps'
 const rootReducer = combineReducers({
-  errors, // contains registrationMessage and loginMessage
+  errors, // contains registrationMessage and loginMessage, invalidEmail
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
   setArt,
   voteMode,
   voteChoicesReducer,
   voteSubmissionModalReducer,
-  voteRankDisplayReducer
+  voteRankDisplayReducer,
+  voteSuccess
 });
 
 export default rootReducer;
