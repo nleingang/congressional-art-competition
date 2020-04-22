@@ -10,7 +10,7 @@ class AdminVotes extends Component {
         this.props.dispatch({ type: "GET_ALL_ART" });
     }
 
-    calculateVoteTotals = ( artistArray ) => {
+    calculateVoteTotals = ( artistArray,  ) => {
 
         voteTotals = [];
 
@@ -18,14 +18,17 @@ class AdminVotes extends Component {
             voteTotals.push(0);
         }); // creates 0 totals for each artist
 
-        
+
 
     }
 
     voteChartData = () => {
 
+        const artReducer = this.props.reduxState.setArt;
+        const voteReducer = this.props.reduxState.setVote;
+
         let artists = [];
-        this.props.reduxState.setArt.forEach( item => {
+        artData.forEach( item => {
             artists.push( item.artist );
         });
 
