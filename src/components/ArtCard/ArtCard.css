@@ -1,17 +1,8 @@
-/* OVERRIDE SEMANTIC DEFAULTS */
-.vote-btn {
-    box-shadow: none!important;
-    border-top: 1px solid lightgray !important;
-    border-bottom: 1px solid lightgray !important;
-}
-
-.vote-btn:hover {
-    /* text-decoration: underline; */
-}
-
+/* OVERRIDE SEMANTIC DEFAULT */
 .ui.card>:last-child,
 .ui.cards>.card>:last-child {
     border-radius: 0!important;
+    margin-bottom: 2rem;
 }
 
 @media screen and (min-width: 767px) {
@@ -24,12 +15,11 @@
         justify-content: center;
     }
     
-    /* OVERRIDES SEMANTIC IMAGE DEFAULTS */
     .img-wrapper img {
         height: 100%;
-        max-width: none!important;
-        /* min-width: 100%; */
-        /* width: auto */
-        /* height: auto; */
+    }
+
+    .ui.image {
+        max-width: none;
     }
 }
