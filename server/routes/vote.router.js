@@ -1,6 +1,8 @@
 const express = require("express");
 const pool = require("../modules/pool");
-const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+const {
+    rejectUnauthenticated
+} = require('../modules/authentication-middleware');
 
 const router = express.Router();
 
@@ -12,8 +14,8 @@ router.get("/", rejectUnauthenticated, (req, res) => {
     pool.query(`SELECT * FROM votes;`)
         .then((result) => {
             console.log("this is all from votes:", result.rows)
-            res.send(result.rows); 
-        }) 
+            res.send(result.rows);
+        })
         .catch((error) => {
             console.log(error);
         })
