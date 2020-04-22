@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from "react-redux";
+import S3Uploader from '../S3Uploader/S3Uploader';
 
 
 class AdminUpload extends Component {
@@ -11,6 +12,7 @@ class AdminUpload extends Component {
                 <div class="new-image-wrapper">
                     <div class="all-inputs">
                         <div>
+                            <S3Uploader />
                             <button class="ui button">
                                 <i class="arrow up icon" />Upload
                             </button>

@@ -12,6 +12,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const artRouter = require('./routes/art.router');
 const voterRouter = require('./routes/voter.router');
+const UploaderS3Router = require("react-dropzone-s3-uploader/s3router");
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,6 +29,16 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/art', artRouter);
 app.use('/api/voters', voterRouter);
+//s3 photo upload
+app.use(
+  "/s3",
+  UploaderS3Router({
+    bucket: process.env.S3_BUCKET, // required
+    region: "us-east-1", // optional
+    headers: { "Access-Control-Allow-Origin": "*" }, // optional
+    ACL: "public-read", // this is the default - set to `public-read` to let anyone view upload
+  })
+);
 
 // Serve static files
 app.use(express.static('build'));
