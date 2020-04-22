@@ -43,4 +43,22 @@ router.post("/vote-submit", (req, res) => {
     });
 });
 
+/**
+ * POST route for adding new artwork
+ */
+router.post("/add-new-artwork", (req, res) => {
+  console.log("add new artwork router hit with req:", req.body);
+  pool.query(
+    `INSERT INTO "artwork" ("title","artist","image_url")
+    VALUES ($1,$2,$3);`,
+    [req.body.title, req.body.artist, req.body.image]
+  ).then((result) => {
+    console.log(result);
+    res.sendStatus(201);
+  }).catch((error) => {
+    console.log("error with uploading new artwork:", error);
+    res.sendStatus(500);
+  })
+});
+
 module.exports = router;
