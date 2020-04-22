@@ -5,36 +5,41 @@ import { connect } from "react-redux";
 import './ArtCard.css';
 
 class ArtCard extends Component {
-
-  state = { 
+  state = {
     overlay: "",
-    voteRank: ""
-  }
+    voteRank: "",
+  };
 
   // this will activate the dimmer but setting state.overlay to active and updating the voteRank for this card
   activateOverlay = () => {
-      this.setState({
-        overlay: "ui active dimmer",
-        voteRank: this.props.reduxState.voteChoicesReducer.findIndex(this.findArrayPosition) + 1
-      });
-  }
+    this.setState({
+      overlay: "ui active dimmer",
+      voteRank:
+        this.props.reduxState.voteChoicesReducer.findIndex(
+          this.findArrayPosition
+        ) + 1,
+    });
+  };
 
   // this will disable the dimmer by setting state.overlay to disabled and updating the voteRank for this card
   disableOverlay = () => {
     this.setState({
       overlay: "ui disabled dimmer",
-      voteRank: this.props.reduxState.voteChoicesReducer.findIndex(this.findArrayPosition) + 1
+      voteRank:
+        this.props.reduxState.voteChoicesReducer.findIndex(
+          this.findArrayPosition
+        ) + 1,
     });
-  }
+  };
 
   // function that will take in an id (string) and check if it matches the id (integer) of this card
   findArrayPosition = (id) => {
-    if(id == this.props.item.id){
+    if (id == this.props.item.id) {
       return true;
     } else {
       return false;
     }
-  }
+  };
 
   handleVoteClick = (event) => {
     if (this.checkIfClicked(event.target.value)) {
@@ -44,17 +49,15 @@ class ArtCard extends Component {
     }
   };
 
-  
-
   checkIfClicked = (id) => {
     this.props.dispatch({
       type: "CHECK_VOTE_CHOICES",
     });
     let choices = this.props.reduxState.voteChoicesReducer;
     if (choices.includes(id)) {
-        return true;
+      return true;
     } else {
-        return false;
+      return false;
     }
   };
 
@@ -63,11 +66,11 @@ class ArtCard extends Component {
   removeChoice = (id) => {
     let newState = this.props.reduxState.voteChoicesReducer;
     if (newState[0] == id) {
-        newState.shift();
+      newState.shift();
     } else if (newState[1] == id) {
-        newState.splice(1,1);
+      newState.splice(1, 1);
     } else {
-        newState.pop();
+      newState.pop();
     }
     this.calculateVoteRanks(newState);
     this.props.dispatch({ type: "SET_VOTE_CHOICES", payload: newState });
@@ -81,11 +84,11 @@ class ArtCard extends Component {
     this.calculateVoteRanks(newState);
     this.props.dispatch({ type: "SET_VOTE_CHOICES", payload: newState });
     this.activateOverlay();
-      if (this.props.reduxState.voteChoicesReducer.length === 3) {
-        this.props.dispatch({
-          type: "VOTE_SUBMISSION_MODAL_OPEN"
-        })
-      }
+    if (this.props.reduxState.voteChoicesReducer.length === 3) {
+      this.props.dispatch({
+        type: "VOTE_SUBMISSION_MODAL_OPEN",
+      });
+    }
   };
 
   calculateVoteRanks = (newState) => {
@@ -96,39 +99,94 @@ class ArtCard extends Component {
     let voteRankState = {
       [first]: 1,
       [second]: 2,
-      [third]: 3
-    }
+      [third]: 3,
+    };
     this.props.dispatch({
       type: "SET_VOTE_RANKS",
-      payload: voteRankState
+      payload: voteRankState,
+    });
+  };
+
+  handleDelete = (event) => {
+    this.props.dispatch({
+      type: "DELETE_ARTWORK",
+      payload: [event.target.value],
+    });
+    //get updated list
+    this.props.dispatch({
+      type: "GET_ALL_ART"
     });
   };
 
   render() {
     return (
       <>
-        <Dimmer.Dimmable as={Card} dimmed={this.state.overlay}>
-          <Dimmer class={this.state.overlay}>
-            <div class="content">
-              <h2>{this.props.reduxState.voteRankDisplayReducer[this.props.item.id]}</h2>
-              <Button inverted onClick={this.handleVoteClick} value={this.props.item.id}>Remove Vote</Button>
-            </div>
-          </Dimmer>
-          <div class="img-wrapper">
-            <Image src={this.props.item.image_url} />
-          </div>
-          <Card.Content textAlign="right">
-            <Card.Header>{this.props.item.title}</Card.Header>
-            <Card.Description>{this.props.item.artist}</Card.Description>
-          </Card.Content>
-          { this.state.overlay !== 'ui active dimmer' ? 
-            <Button secondary className="vote-btn" 
-              onClick={this.handleVoteClick} 
-              value={this.props.item.id}
-              content="Vote"
-            /> : <></>
-          }
-        </Dimmer.Dimmable>
+        {this.props.reduxState.voteMode ? (
+          //renders for voter
+          <>
+            <Dimmer.Dimmable as={Card} dimmed={this.state.overlay}>
+              <Dimmer class={this.state.overlay}>
+                <div class="content">
+                  <h2>
+                    {
+                      this.props.reduxState.voteRankDisplayReducer[
+                        this.props.item.id
+                      ]
+                    }
+                  </h2>
+                  <Button
+                    inverted
+                    onClick={this.handleVoteClick}
+                    value={this.props.item.id}
+                  >
+                    Remove Vote
+                  </Button>
+                </div>
+              </Dimmer>
+              <div class="img-wrapper">
+                <Image src={this.props.item.image_url} />
+              </div>
+              <Card.Content textAlign="right">
+                <Card.Header>{this.props.item.title}</Card.Header>
+                <Card.Description>{this.props.item.artist}</Card.Description>
+              </Card.Content>
+              {this.state.overlay !== "ui active dimmer" ? (
+                <Button
+                  secondary
+                  className="vote-btn"
+                  onClick={this.handleVoteClick}
+                  value={this.props.item.id}
+                  content="Vote"
+                />
+              ) : (
+                <></>
+              )}
+            </Dimmer.Dimmable>
+          </>
+        ) : (
+          //renders for admin
+          <>
+            <Card>
+              <div class="img-wrapper">
+                <Image src={this.props.item.image_url} />
+              </div>
+              <Card.Content textAlign="right">
+                <Card.Header>{this.props.item.title}</Card.Header>
+                <Card.Description>{this.props.item.artist}</Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <div className="ui two buttons">
+                  <Button basic color="green">
+                    Edit
+                  </Button>
+                  <Button basic color="red" onClick={this.handleDelete} value={this.props.item.id}>
+                    Delete
+                  </Button>
+                </div>
+              </Card.Content>
+            </Card>
+          </>
+        )}
       </>
     );
   }
@@ -139,11 +197,3 @@ const mapReduxStateToProps = (reduxState) => ({
 });
 
 export default connect(mapReduxStateToProps)(ArtCard);
-
-
-  /* { this.state.isClicked ?}
-          <div class="ui active dimmer">
-            <div class="content">
-              <h2>{this.props.item.id}</h2>
-            </div>
-          </div> */
