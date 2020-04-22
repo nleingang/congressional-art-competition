@@ -2,10 +2,16 @@
 .vote-btn {
     box-shadow: none!important;
     border-top: 1px solid lightgray !important;
+    border-bottom: 1px solid lightgray !important;
 }
 
 .vote-btn:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+}
+
+.ui.card>:last-child,
+.ui.cards>.card>:last-child {
+    border-radius: 0!important;
 }
 
 @media screen and (min-width: 767px) {

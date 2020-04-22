@@ -122,13 +122,12 @@ class ArtCard extends Component {
             <Card.Description>{this.props.item.artist}</Card.Description>
           </Card.Content>
           { this.state.overlay !== 'ui active dimmer' ? 
-            <Button basic className="vote-btn" 
+            <Button secondary className="vote-btn" 
               onClick={this.handleVoteClick} 
               value={this.props.item.id}
-              content="Vote"
-            /> : null
+              content="+1 Vote"
+            /> : <></>
           }
-          
         </Dimmer.Dimmable>
       </>
     );
