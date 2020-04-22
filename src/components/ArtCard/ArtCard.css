@@ -2,7 +2,6 @@
 .ui.card>:last-child,
 .ui.cards>.card>:last-child {
     border-radius: 0!important;
-    margin-bottom: 2rem;
 }
 
 @media screen and (min-width: 767px) {
