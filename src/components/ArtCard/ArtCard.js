@@ -114,14 +114,21 @@ class ArtCard extends Component {
               <Button inverted onClick={this.handleVoteClick} value={this.props.item.id}>Remove Vote</Button>
             </div>
           </Dimmer>
-          <img src={this.props.item.image_url} height={400} width={290}/>
+          <div class="img-wrapper">
+            <Image src={this.props.item.image_url} />
+          </div>
           <Card.Content textAlign="right">
             <Card.Header>{this.props.item.title}</Card.Header>
             <Card.Description>{this.props.item.artist}</Card.Description>
           </Card.Content>
-          <Button basic className="vote-btn" onClick={this.handleVoteClick} value={this.props.item.id}>
-            Vote
-          </Button>
+          { this.state.overlay !== 'ui active dimmer' ? 
+            <Button basic className="vote-btn" 
+              onClick={this.handleVoteClick} 
+              value={this.props.item.id}
+              content="Vote"
+            /> : null
+          }
+          
         </Dimmer.Dimmable>
       </>
     );

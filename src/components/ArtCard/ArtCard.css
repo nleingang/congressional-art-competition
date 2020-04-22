@@ -7,3 +7,23 @@
 .vote-btn:hover {
     text-decoration: underline;
 }
+
+@media screen and (min-width: 767px) {
+
+    .img-wrapper {
+        height: 30rem;
+        width: auto;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* OVERRIDES SEMANTIC IMAGE DEFAULTS */
+    .img-wrapper img {
+        height: 100%;
+        max-width: none!important;
+        /* min-width: 100%; */
+        /* width: auto */
+        /* height: auto; */
+    }
+}
