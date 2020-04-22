@@ -1,7 +1,6 @@
-/* OVERRIDE SEMANTIC DEFAULT */
 .ui.card>:last-child,
 .ui.cards>.card>:last-child {
-    border-radius: 0!important;
+    border-radius: 0 !important;
     margin-bottom: 2rem;
 }
 
@@ -14,14 +13,9 @@
         display: flex;
         justify-content: center;
     }
-    
-    /* OVERRIDE SEMANTIC DEFAULT */
+
     .img-wrapper img {
         height: 100%;
         max-width: none!important;
-    }
-
-    .artwork-popup img {
-        width: 100%;
     }
 }

@@ -3,8 +3,6 @@ import { Header, Card, Image, Modal } from "semantic-ui-react";
 
 import { connect } from "react-redux";
 
-// import './ModalCard.css';
-
 class ModalCard extends Component {
 
     render() {
@@ -12,7 +10,9 @@ class ModalCard extends Component {
             <Modal closeIcon
                 trigger={
                     <Card>
-                        <Image src={this.props.item.image_url} />
+                        <div class="img-wrapper">
+                            <Image src={this.props.item.image_url} />
+                        </div>
                         <Card.Content textAlign="right">
                             <Card.Header>{this.props.item.title}</Card.Header>
                             <Card.Description>{this.props.item.artist}</Card.Description>
