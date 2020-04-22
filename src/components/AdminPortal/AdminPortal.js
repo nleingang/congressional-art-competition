@@ -11,11 +11,12 @@ import AdminVotes from '../AdminVotes/AdminVotes';
 
 
 class LandingPage extends Component {
-    componentDidMount() {
-      this.props.dispatch({
-          type: "GET_ALL_ART"
-      });
-    }
+    // Is this necessary here? 
+    // componentDidMount() {
+    //   this.props.dispatch({
+    //       type: "GET_ALL_ART"
+    //   });
+    // }
 
     render() {
 

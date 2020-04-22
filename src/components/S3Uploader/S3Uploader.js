@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import DropzoneS3Uploader from "react-dropzone-s3-uploader";
 
 export default class S3Uploader extends React.Component {
-  handleFinishedUpload = (info) => {
-    console.log("File uploaded with filename", info.filename);
-    console.log("Access it on s3 at", info.fileUrl);
-  };
+  
 
   render() {
     const uploadOptions = {
@@ -16,7 +13,7 @@ export default class S3Uploader extends React.Component {
 
     return (
       <DropzoneS3Uploader
-        onFinish={this.handleFinishedUpload}
+        onFinish={this.props.handleFinishedUpload}
         s3Url={s3Url}
         maxSize={1024 * 1024 * 5}
         upload={uploadOptions}
