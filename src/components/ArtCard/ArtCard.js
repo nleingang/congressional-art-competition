@@ -125,7 +125,7 @@ class ArtCard extends Component {
             <Button secondary className="vote-btn" 
               onClick={this.handleVoteClick} 
               value={this.props.item.id}
-              content="+1 Vote"
+              content="Vote"
             /> : <></>
           }
         </Dimmer.Dimmable>
