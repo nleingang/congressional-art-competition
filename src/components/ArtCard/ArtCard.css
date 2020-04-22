@@ -1,6 +1,16 @@
 /* OVERRIDE SEMANTIC DEFAULT */
+.ui.card>:first-child,
+.ui.cards>.card>:first-child {
+    border-radius: 0!important;
+}
+
 .ui.card>:last-child,
 .ui.cards>.card>:last-child {
+    border-radius: 0!important;
+}
+
+.ui.card,
+.ui.cards>.card {
     border-radius: 0!important;
 }
 
