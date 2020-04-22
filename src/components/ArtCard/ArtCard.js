@@ -1,24 +1,10 @@
 import React, { Component } from "react";
 import { Card, Image, Button, Dimmer } from "semantic-ui-react";
-
 import { connect } from "react-redux";
 
-// import './ModalCard.css';
+import './ArtCard.css';
 
 class ArtCard extends Component {
-
-  // when the ArtCard component mounts, it will check the contents of the voteChoicesReducer, []
-  // it will also set state.overlay to props.overlay passed from the landing page
-  // NOTE: there seems to be a race condition happening - 
-  // componentDidMount() {
-  //   this.props.dispatch({
-  //     type: "CHECK_VOTE_CHOICES"
-  //   })
-  //   this.setState({
-  //     overlay: this.props.overlay,
-  //     voteRank: this.props.reduxState.voteChoicesReducer.findIndex(this.findArrayPosition) + 1
-  //   })
-  // }
 
   state = { 
     overlay: "",
@@ -125,17 +111,23 @@ class ArtCard extends Component {
           <Dimmer class={this.state.overlay}>
             <div class="content">
               <h2>{this.props.reduxState.voteRankDisplayReducer[this.props.item.id]}</h2>
-              <Button onClick={this.handleVoteClick} value={this.props.item.id}>Remove Vote</Button>
+              <Button inverted onClick={this.handleVoteClick} value={this.props.item.id}>Remove Vote</Button>
             </div>
           </Dimmer>
-          <Image src={this.props.item.image_url} />
+          <div class="img-wrapper">
+            <Image src={this.props.item.image_url} />
+          </div>
           <Card.Content textAlign="right">
             <Card.Header>{this.props.item.title}</Card.Header>
             <Card.Description>{this.props.item.artist}</Card.Description>
           </Card.Content>
-          <Button onClick={this.handleVoteClick} value={this.props.item.id}>
-            Vote
-          </Button>
+          { this.state.overlay !== 'ui active dimmer' ? 
+            <Button secondary className="vote-btn" 
+              onClick={this.handleVoteClick} 
+              value={this.props.item.id}
+              content="Vote"
+            /> : <></>
+          }
         </Dimmer.Dimmable>
       </>
     );
