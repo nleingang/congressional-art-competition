@@ -6,6 +6,7 @@ import getArtSaga from './getArtSaga';
 import voteSubmitSaga from './voteSubmitSaga';
 import votingSaga from './votingSaga';
 import addNewArtworkSaga from './addNewArtworkSaga';
+import deleteArtworkSaga from './deleteArtworkSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -22,6 +23,7 @@ export default function* rootSaga() {
     getArtSaga(),
     voteSubmitSaga(),
     votingSaga(),
-    addNewArtworkSaga()
+    addNewArtworkSaga(),
+    deleteArtworkSaga(),
   ]);
 }

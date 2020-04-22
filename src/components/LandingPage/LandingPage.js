@@ -49,6 +49,10 @@ class LandingPage extends Component {
                       return (
                         <ArtCard key={item.id} item={item} />
                       );
+                  } else if(this.props.reduxState.user.id) {
+                    return (
+                      <ArtCard key={item.id} item={item}/>
+                    )
                   } else {
                     return (
                       <ModalCard key={item.id} item={item}/>
