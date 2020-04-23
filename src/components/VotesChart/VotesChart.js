@@ -10,29 +10,29 @@ class VotesChart extends Component {
         this.props.dispatch({ type: "GET_VOTES" });
     }
 
-    calculateVoteTotals = ( artArray, votesArray ) => {
-        let voteTotals = [];
+    calculateVoteTotals = ( artReducer, votesReducer ) => {
+        let voteTotals = {};
 
-        artArray.forEach( artist => {
-            voteTotals.push(0);
+        artReducer.forEach( artist => {
+            voteTotals[artist.id] = 0;
         }); // creates 0 totals for each artist
-
-        votesArray.forEach( vote => {
-            voteTotals[ vote.first_place - 1 ] += 3;
-            voteTotals[ vote.second_place - 1 ] += 2;
-            voteTotals[ vote.third_place - 1 ] += 1;
+        votesReducer.forEach( vote => {
+            voteTotals[ vote.first_place ] += 3;
+            voteTotals[ vote.second_place ] += 2;
+            voteTotals[ vote.third_place ] += 1;
         }); // tallies points for each vote's first, second, and third choices
+
 
         return voteTotals;
     }
 
-    sortDesc = ( artArray, votesArray ) => {
+    sortDesc = ( artReducer, voteTotals ) => {
         let dataToSort = [];
 
-        artArray.map(item => {
+        artReducer.map(item => {
             dataToSort.push({
                 artist: item.artist,
-                votes: votesArray[item.id - 1]
+                votes: voteTotals[item.id]
             });
         });
 
