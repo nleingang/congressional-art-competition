@@ -3,6 +3,7 @@ import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import getArtSaga from './getArtSaga';
+import getVotesSaga from './getVotesSaga';
 import voteSubmitSaga from './voteSubmitSaga';
 import votingSaga from './votingSaga';
 import addNewArtworkSaga from './addNewArtworkSaga';
@@ -21,6 +22,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     getArtSaga(),
+    getVotesSaga(),
     voteSubmitSaga(),
     votingSaga(),
     addNewArtworkSaga(),

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from "react-redux";
+import VotesChart from '../VotesChart/VotesChart';
 
 
 class AdminVotes extends Component {
@@ -9,7 +10,7 @@ class AdminVotes extends Component {
             <section class="admin-votes">
                 <h2>Votes</h2>
                 <div class="chart-wrapper">
-                    {/* jsChart goes here */}
+                    <VotesChart />
                 </div>
                 <div>
                     <button class="ui button">Download CSV</button>
