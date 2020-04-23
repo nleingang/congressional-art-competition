@@ -7,9 +7,9 @@ html {
 }
 
 h1, .header {
+    /* OVERRIDES SEMANTIC-UI DEFAULT HEADER FONT */
     font-family: 'Permanent Marker', cursive!important;
     font-size: 4em;
-    /* OVERRIDES SEMANTIC-UI DEFAULT HEADER FONT */
 }
 
 h2, h3, h4, h5, h6 {
@@ -68,6 +68,7 @@ input {
 
 .container-wrapper {
     background-color: #3F8ADE;
+    padding-bottom: 50px;
 }
 .container {
     margin: 0 50px;
