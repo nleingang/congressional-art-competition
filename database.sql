@@ -27,9 +27,9 @@ CREATE TABLE "artwork"
 CREATE TABLE "votes"
 (
     "id" SERIAL PRIMARY KEY,
-    "first_place" INT REFERENCES artwork(id),
-    "second_place" INT REFERENCES artwork(id),
-    "third_place" INT REFERENCES artwork(id)
+    "first_place" INT REFERENCES artwork(id) ON DELETE CASCADE,
+    "second_place" INT REFERENCES artwork(id) ON DELETE CASCADE,
+    "third_place" INT REFERENCES artwork(id) ON DELETE CASCADE
 );
 
 INSERT INTO artwork

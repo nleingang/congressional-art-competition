@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-
+import { Button } from "semantic-ui-react";
 import './AdminPortal.css';
 
 // components
@@ -11,13 +11,10 @@ import AdminVotes from '../AdminVotes/AdminVotes';
 
 
 class LandingPage extends Component {
-    // Is this necessary here? 
-    // componentDidMount() {
-    //   this.props.dispatch({
-    //       type: "GET_ALL_ART"
-    //   });
-    // }
 
+    handleEdit = () => {
+        this.props.history.push("/admin/edit")
+    }
     render() {
 
         return (
@@ -31,8 +28,9 @@ class LandingPage extends Component {
                 
                 <section class="admin-edit">
                     <div>
-                        <button class="ui button">Edit Images</button>
+                        <button class="ui button" onClick={this.handleEdit}>Edit Images</button>
                     </div>
+                    <Button onClick={() => this.props.dispatch({ type: 'LOGOUT' })}>Logout</Button>
                 </section>
                 
             </div>

@@ -3,10 +3,11 @@ import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import getArtSaga from './getArtSaga';
+import getVotesSaga from './getVotesSaga';
 import voteSubmitSaga from './voteSubmitSaga';
 import votingSaga from './votingSaga';
 import addNewArtworkSaga from './addNewArtworkSaga';
-import getVotesSaga from './getVotesSaga';
+import deleteArtworkSaga from './deleteArtworkSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,9 +22,10 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     getArtSaga(),
+    getVotesSaga(),
     voteSubmitSaga(),
     votingSaga(),
     addNewArtworkSaga(),
-    getVotesSaga()
+    deleteArtworkSaga(),
   ]);
 }
