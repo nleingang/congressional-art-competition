@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Image, Button, Dimmer, TransitionablePortal } from "semantic-ui-react";
+import { Card, Image, Button, Dimmer } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 import './ArtCard.css';
