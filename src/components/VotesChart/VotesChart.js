@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-
 import { Bar } from "react-chartjs-2";
 
 
-class AdminVotes extends Component {
+class VotesChart extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: "GET_ALL_ART" });
         this.props.dispatch({ type: "GET_VOTES" });
     }
 
-    calculateVoteTotals = ( artistArray, votesArray ) => {
-
+    calculateVoteTotals = ( artArray, votesArray ) => {
         let voteTotals = [];
 
-        artistArray.forEach( artist => {
+        artArray.forEach( artist => {
             voteTotals.push(0);
         }); // creates 0 totals for each artist
 
@@ -28,18 +26,29 @@ class AdminVotes extends Component {
         return voteTotals;
     }
 
+    sortDesc = ( artArray, votesArray ) => {
+        let dataToSort = [];
+
+        artArray.map(item => {
+            dataToSort.push({
+                artist: item.artist,
+                votes: votesArray[item.id - 1]
+            });
+        });
+
+        return dataToSort.sort((a, b) => b.votes - a.votes);
+    }
+
     voteChartData = () => {
 
         const artReducer = this.props.reduxState.setArt;
-        const votes = this.props.reduxState.setVotes;
+        const votesReducer = this.props.reduxState.setVotes;
 
-        let artists = [];
-        artReducer.forEach( item => {
-            artists.push( item.artist );
-        });
+        const voteTotals = this.calculateVoteTotals( artReducer, votesReducer );
+        const sortedData = this.sortDesc( artReducer, voteTotals );
 
-        let voteArray = this.calculateVoteTotals( artists, votes );
-
+        const artists = sortedData.map( item => item.artist );
+        const votes = sortedData.map( item => item.votes );
 
         const voteData = {
             labels: artists,
@@ -49,7 +58,7 @@ class AdminVotes extends Component {
             datasets: [{
                 label: "Vote Results",
                 borderWidth: 1,
-                data: voteArray
+                data: votes
             }]
         }
 
@@ -58,8 +67,7 @@ class AdminVotes extends Component {
 
     render() {
         return (
-            <Bar 
-                data={this.voteChartData}/>
+            <Bar data={this.voteChartData}/>
         );
     }
 }
@@ -68,4 +76,4 @@ const mapReduxStateToProps = (reduxState) => ({
   reduxState,
 });
 
-export default connect(mapReduxStateToProps)(AdminVotes);
+export default connect(mapReduxStateToProps)(VotesChart);
