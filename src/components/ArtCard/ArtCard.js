@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Image, Button, Dimmer } from "semantic-ui-react";
+import { Card, Image, Button, Dimmer, TransitionablePortal } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 import './ArtCard.css';
@@ -19,17 +19,27 @@ class ArtCard extends Component {
           this.findArrayPosition
         ) + 1,
     });
+    setTimeout( ()=> {
+      this.setState({
+        overlay: "ui active dimmer fade-in"
+      })
+    }, 0)
   };
 
   // this will disable the dimmer by setting state.overlay to disabled and updating the voteRank for this card
   disableOverlay = () => {
     this.setState({
-      overlay: "ui disabled dimmer",
+      overlay: "ui active dimmer",
       voteRank:
         this.props.reduxState.voteChoicesReducer.findIndex(
           this.findArrayPosition
         ) + 1,
     });
+    setTimeout( () => {
+      this.setState({
+        overlay: "ui disabled dimmer"
+      })
+    }, 500)
   };
 
   // function that will take in an id (string) and check if it matches the id (integer) of this card
@@ -125,24 +135,25 @@ class ArtCard extends Component {
           //renders for voter
           <>
             <Dimmer.Dimmable as={Card} dimmed={this.state.overlay}>
-              <Dimmer class={this.state.overlay}>
-                <div class="content">
-                  <h2>
-                    {
-                      this.props.reduxState.voteRankDisplayReducer[
-                        this.props.item.id
-                      ]
-                    }
-                  </h2>
-                  <Button
-                    inverted
-                    onClick={this.handleVoteClick}
-                    value={this.props.item.id}
-                  >
-                    Remove Vote
-                  </Button>
-                </div>
-              </Dimmer>
+                <Dimmer class={this.state.overlay}>
+                  <div class="content">
+                    <h2>
+                      {
+                        this.props.reduxState.voteRankDisplayReducer[
+                          this.props.item.id
+                        ]
+                      }
+                    </h2>
+                    {/* this will hide the button on fade out */}
+                    { this.state.overlay !== "ui active dimmer" ?
+                      <Button
+                        inverted
+                        onClick={this.handleVoteClick}
+                        value={this.props.item.id}
+                        content="Remove Vote"
+                      /> : <></> }
+                  </div>
+                </Dimmer>
               <div class="img-wrapper">
                 <Image src={this.props.item.image_url} />
               </div>
@@ -150,7 +161,8 @@ class ArtCard extends Component {
                 <Card.Header>{this.props.item.title}</Card.Header>
                 <Card.Description>{this.props.item.artist}</Card.Description>
               </Card.Content>
-              {this.state.overlay !== "ui active dimmer" ? (
+              {/* this will hide the button on fade in */}
+              {this.state.overlay !== "ui active dimmer fade-in" ? (
                 <Button
                   secondary
                   className="vote-btn"
