@@ -61,4 +61,20 @@ router.post("/add-new-artwork", (req, res) => {
   })
 });
 
+/**
+ * DELETE route for deleting artwork
+ */
+router.delete("/delete/:id", (req, res) => {
+  const queryText = `DELETE FROM "artwork" WHERE "id"=$1`;
+  pool
+    .query(queryText, [req.params.id])
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("Error completing DELETE artwork query", err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

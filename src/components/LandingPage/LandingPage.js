@@ -5,7 +5,7 @@ import React, { Component } from "react";
 //   Redirect,
 //   Switch,
 // } from "react-router-dom";
-import { Card, Button } from "semantic-ui-react";
+import { Card, Button, Header } from "semantic-ui-react";
 import ModalCard from "../ModalCard/ModalCard";
 import VoteSubmissionModal from "../VoteSubmissionModal/VoteSubmissionModal";
 
@@ -39,6 +39,7 @@ class LandingPage extends Component {
 
         return (
           <div className="landing-page-wrapper">
+            <Header size="huge" textAlign="center" dividing>2020 Congressional Art Competition</Header>
             <div className="vote-button">
               <VoteButtonModal />
             </div>
@@ -49,6 +50,10 @@ class LandingPage extends Component {
                       return (
                         <ArtCard key={item.id} item={item} />
                       );
+                  } else if(this.props.reduxState.user.id) {
+                    return (
+                      <ArtCard key={item.id} item={item}/>
+                    )
                   } else {
                     return (
                       <ModalCard key={item.id} item={item}/>
