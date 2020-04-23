@@ -14,16 +14,14 @@ class VotesChart extends Component {
         let voteTotals = {};
 
         artReducer.forEach( artist => {
-            // console.log(artist);
             voteTotals[artist.id] = 0;
         }); // creates 0 totals for each artist
-        console.log(voteTotals);
         votesReducer.forEach( vote => {
             voteTotals[ vote.first_place ] += 3;
             voteTotals[ vote.second_place ] += 2;
             voteTotals[ vote.third_place ] += 1;
         }); // tallies points for each vote's first, second, and third choices
-        console.log(voteTotals);
+
 
         return voteTotals;
     }
