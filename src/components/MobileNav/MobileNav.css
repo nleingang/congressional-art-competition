@@ -17,10 +17,14 @@
   height: auto;
 }
 
+.close-icon {
+  float: right;
+}
 .mobile-nav-links-ul {
   list-style: none;
   display: flex;
   flex-direction: column;
+  margin-left: -43px;
 }
 .mobile-nav-link {
   float: left;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Modal } from 'semantic-ui-react';
+import { Modal, Icon } from 'semantic-ui-react';
 import NavLinks from '../NavLinks/NavLinks';
 
 
@@ -17,7 +17,7 @@ class ModalLinks extends Component {
     return (
       <Modal
         basic
-        dimmer={'blurring'}
+        dimmer={"blurring"}
         trigger={
           <button class="ui button mobile-menu" onClick={this.handleOpen}>
             <i class="bars icon" />
@@ -25,15 +25,16 @@ class ModalLinks extends Component {
         }
         open={this.state.modalOpen}
         onClose={this.handleClose}
-        size='fullscreen'
+        size="fullscreen"
       >
         <Modal.Content>
+          <Icon className="close-icon" onClick={this.handleClose} name="close" size="large"/>
           <ul className="mobile-nav-links-ul">
-            <NavLinks responsive="mobile-nav-link"/>
+            <NavLinks responsive="mobile-nav-link" />
           </ul>
         </Modal.Content>
       </Modal>
-    )
+    );
   }
 }
 
