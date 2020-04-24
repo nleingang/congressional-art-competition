@@ -23,6 +23,9 @@ class VoteButtonModal extends Component {
 
   render() {
     return (
+      <>
+      {/* ternary will not render button if user is in vote mode */}
+      {this.props.reduxState.voteMode ? <></> :
       <Modal basic
         trigger={
           <Button size="large" onClick={this.handleOpen}>
@@ -70,6 +73,8 @@ class VoteButtonModal extends Component {
           </Modal.Actions>
         </Modal.Content>
       </Modal>
+      }
+      </>
     );
   }
 }

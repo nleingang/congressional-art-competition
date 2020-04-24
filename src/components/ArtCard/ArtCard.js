@@ -186,15 +186,10 @@ class ArtCard extends Component {
                 <Card.Header>{this.props.item.title}</Card.Header>
                 <Card.Description>{this.props.item.artist}</Card.Description>
               </Card.Content>
-              <Card.Content extra>
-                <div className="ui two buttons">
-                  <Button basic color="green">
-                    Edit
-                  </Button>
+              <Card.Content extra textAlign="center">
                   <Button basic color="red" onClick={this.handleDelete} value={this.props.item.id}>
                     Delete
                   </Button>
-                </div>
               </Card.Content>
             </Card>
           </>
