@@ -46,6 +46,9 @@ function* triggerReset(action) {
   try {
     yield put({ type: "RESET_STORE" });
     yield put({ type: "GET_ALL_ART" });
+    if (action.payload === "CANCEL") {
+      yield put({ type: "SET_VOTE_MODE" });
+    }
   } catch (error) {
     console.log(error);
   }
