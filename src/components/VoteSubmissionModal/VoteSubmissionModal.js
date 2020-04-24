@@ -37,15 +37,23 @@ class VoteSubmissionModal extends Component {
   }
 
   handleSubmit = () => {
-    console.log(this.state)
     this.props.dispatch({
       type: "EMAIL_SECURITY_CHECK",
       payload: this.state
     });
+    
     this.props.dispatch({
       type: "ZIP_SECURITY_CHECK",
       payload: this.state
     });
+
+    setTimeout(() => {
+      console.log('in timeout:')
+      console.log('this is voteSuccess:', this.props.reduxState.voteSuccess);
+      if (this.props.reduxState.voteSuccess) {
+        this.props.dispatch({ type: "TRIGGER_RESET" });
+      }
+    }, 4000);
   }
 
   render() {

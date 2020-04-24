@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-// import {
-//   HashRouter as Router,
-//   Route,
-//   Redirect,
-//   Switch,
-// } from "react-router-dom";
+import {
+  Link
+} from "react-router-dom";
 import { Card, Button, Header } from "semantic-ui-react";
 import ModalCard from "../ModalCard/ModalCard";
 import VoteSubmissionModal from "../VoteSubmissionModal/VoteSubmissionModal";
@@ -35,13 +32,20 @@ class LandingPage extends Component {
         payload: this.props.reduxState.voteChoicesReducer
       })
     }
+    
     render() {
 
         return (
           <div className="landing-page-wrapper">
             <Header size="huge" textAlign="center" dividing>2020 Congressional Art Competition</Header>
             <div className="vote-button">
-              <VoteButtonModal />
+              { !this.props.reduxState.user.id ? 
+                <VoteButtonModal /> 
+              :
+                <Link to="/admin">
+                  <Button content="Back to Admin Portal"/>
+                </Link>
+              }
             </div>
             <div className="art-grid-wrapper">
               <Card.Group stackable={true} centered={true}>
@@ -64,7 +68,13 @@ class LandingPage extends Component {
               
             </div>
             <div className="vote-button">
-              <VoteButtonModal />
+              { !this.props.reduxState.user.id ? 
+                <VoteButtonModal /> 
+              :
+                <Link to="/admin">
+                  <Button content="Back to Admin Portal"/>
+                </Link>
+              }
             </div>
             {/* 
               each of these modals display messages to the 
@@ -76,6 +86,7 @@ class LandingPage extends Component {
             */}
             {this.props.reduxState.voteSubmissionModalReducer ? <VoteSubmissionModal></VoteSubmissionModal> : <></>}
             {this.props.reduxState.voteSuccess ? <VoteSuccessModal/> : <></>}
+            {/* <VoteSuccessModal></VoteSuccessModal> */}
             {this.props.reduxState.errors.invalidEmail === 'email in use' ? <ReturningVoterMessage/> : <></>}
           </div>
         );
