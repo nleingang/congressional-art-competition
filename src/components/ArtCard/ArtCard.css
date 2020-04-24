@@ -12,6 +12,7 @@
 .ui.card,
 .ui.cards>.card {
     border-radius: 0!important;
+    width: 217px;
 }
 
 .ui.dimmer {
@@ -26,7 +27,7 @@
 @media screen and (min-width: 767px) {
 
     .img-wrapper {
-        height: 30rem;
+        height: 22.5rem;
         width: auto;
         overflow: hidden;
         display: flex;
