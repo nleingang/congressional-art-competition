@@ -66,7 +66,9 @@ class VotesChart extends Component {
 
     render() {
         return (
-            <Bar data={this.voteChartData}/>
+            <Bar data={this.voteChartData}
+                options = {{ scales: { yAxes: [{ ticks: { beginAtZero: true } }] } }}
+            />
         );
     }
 }
