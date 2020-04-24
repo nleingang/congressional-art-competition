@@ -36,6 +36,10 @@ class VoteSubmissionModal extends Component {
     });
   }
 
+  handleCancel = () => {
+    this.props.dispatch({ type: "TRIGGER_RESET", payload: "CANCEL" });
+  }
+
   handleSubmit = () => {
     this.props.dispatch({
       type: "EMAIL_SECURITY_CHECK",
@@ -152,7 +156,7 @@ class VoteSubmissionModal extends Component {
               <Grid columns={2} textAlign="center">
               <Grid.Row>
                 <Grid.Column>
-                  <Button>Cancel</Button>
+                  <Button onClick={this.handleCancel}>Cancel</Button>
                 </Grid.Column>
                 <Grid.Column>
                   <Button onClick={this.handleSubmit}>Submit</Button>
