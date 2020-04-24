@@ -16,7 +16,7 @@ import voteSuccess from './voteSuccess';
 
 // Lets make a bigger object for our store, with the objects from our reducers.
 // This is what we get when we use 'state' inside of 'mapStateToProps'
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage, invalidEmail
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
@@ -28,5 +28,13 @@ const rootReducer = combineReducers({
   voteRankDisplayReducer,
   voteSuccess
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === 'RESET_STORE') {
+    state = undefined
+  }
+
+  return appReducer(state, action)
+}
 
 export default rootReducer;

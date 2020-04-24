@@ -81,6 +81,12 @@ input {
     box-shadow: none!important;
 }
 
+/* for use on various modals */
+/* overrides transparent background setting for .ui.dimmer */
+.inverted-dimmer {
+    background-color: rgba(255, 255, 255, .90) !important;
+}
+
 @media only screen and (max-width: 799px) {
     .nav {
         display: none;
