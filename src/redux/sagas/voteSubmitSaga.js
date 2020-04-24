@@ -42,6 +42,15 @@ const zipArray = [
     55455,
 ]
 
+function* triggerReset(action) {
+  try {
+    yield put({ type: "RESET_STORE" });
+    yield put({ type: "GET_ALL_ART" });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* voteSubmit(action) {
 
   const arrayOfVotes = yield select(getVotes);
@@ -57,6 +66,7 @@ function* voteSubmit(action) {
     if (errors.invalidEmail === '' && errors.invalidEmail === '') {
       yield axios.post("/api/art/vote-submit", votes);
       yield axios.post("/api/voters", action.payload);
+
       yield put({ type: 'VOTE_SUCCESS' });
       yield put({ type: 'VOTE_SUBMISSION_MODAL_CLOSE'});
     } else {
@@ -105,5 +115,6 @@ function* voteSubmitSaga() {
   yield takeEvery("SUBMIT_VOTE", voteSubmit);
   yield takeEvery("EMAIL_SECURITY_CHECK", emailSecurityCheck);
   yield takeEvery("ZIP_SECURITY_CHECK", zipSecurityCheck);
+  yield takeEvery("TRIGGER_RESET", triggerReset);
 }
 export default voteSubmitSaga;

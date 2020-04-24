@@ -4,6 +4,10 @@
     margin-bottom: 2rem;
 }
 
+.ui.basic.modal>.content {
+    text-align: right!important;
+}
+
 @media screen and (min-width: 767px) {
 
     .img-wrapper {

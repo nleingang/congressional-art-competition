@@ -1,0 +1,7 @@
+.blurring.dimmable>.dimmer {
+    background-color: rgba(0, 0, 0, .9)!important;
+}
+
+.ui.basic.modal>.content {
+    text-align: center;
+}

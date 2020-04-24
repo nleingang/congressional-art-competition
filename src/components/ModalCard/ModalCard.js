@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { Header, Card, Image, Modal, Button } from "semantic-ui-react";
-
+import { Header, Card, Image, Modal } from "semantic-ui-react";
 import { connect } from "react-redux";
+
+import './ModalCard.css';
 
 class ModalCard extends Component {
   render() {
     return (
-      <Modal
-        closeIcon
+      <Modal basic
+        className="inverted-dimmer"
+        dimmer={'inverted'}
         trigger={
           <Card>
             <div class="img-wrapper">
