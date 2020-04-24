@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import S3Uploader from "../S3Uploader/S3Uploader";
 import { Image } from "semantic-ui-react";
+import Swal from "sweetalert2";
 
 class AdminUpload extends Component {
   state = {
@@ -41,10 +42,22 @@ class AdminUpload extends Component {
         title: "",
         artist: "",
       });
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Added to artwork!",
+        timer: 1000,
+        timerProgressBar: true,
+      }).then((result) => {
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log("I was closed by the timer");
+        }
+      });
     }
   };
 
   render() {
+    
     return (
       <section class="admin-upload">
         <h2>Image Upload</h2>
@@ -54,11 +67,14 @@ class AdminUpload extends Component {
               {/* renders image if an image has been uploaded; 
             renders dropzone uploader if no image has been uploaded */}
               {this.state.image ? (
-                <Image src={this.state.image} height="200px" width="auto" />
+                <Image className="uploaded-image" src={this.state.image} height="200px" width="auto" />
               ) : (
+                <div className="upload-div">
+                <h4>Click to choose a file or drag and drop an image here:</h4>
                 <S3Uploader
                   handleFinishedUpload={this.handleFinishedUpload.bind(this)}
                 />
+                </div>
               )}
             </div>
             <div class="text-inputs">
