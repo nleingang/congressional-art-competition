@@ -61,7 +61,6 @@ class VotesChart extends Component {
                 data: votes
             }]
         }
-
         return voteData;
     }
 

@@ -13,7 +13,6 @@ const router = express.Router();
 router.get("/", rejectUnauthenticated, (req, res) => {
     pool.query(`SELECT * FROM votes;`)
         .then((result) => {
-            console.log("this is all from votes:", result.rows)
             res.send(result.rows);
         })
         .catch((error) => {

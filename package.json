@@ -17,6 +17,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-chartjs-2": "^2.9.0",
+    "react-csv": "^2.0.3",
     "react-dom": "^16.8.6",
     "react-dropzone-s3-uploader": "^1.1.0",
     "react-redux": "^7.1.1",
