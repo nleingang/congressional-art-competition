@@ -3,7 +3,7 @@
     border-radius: 0 !important;
 }
 
-.ui.basic.modal>.content {
+.ui.basic.modal.modal-card>.content {
     text-align: right!important;
 }
 

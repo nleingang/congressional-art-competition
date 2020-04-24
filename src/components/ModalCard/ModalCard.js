@@ -8,7 +8,7 @@ class ModalCard extends Component {
   render() {
     return (
       <Modal basic
-        className="inverted-dimmer"
+        className="inverted-dimmer modal-card"
         dimmer={'inverted'}
         trigger={
           <Card>

@@ -85,7 +85,6 @@ class LandingPage extends Component {
           <></>
         )}
         {this.props.reduxState.voteSuccess ? <VoteSuccessModal /> : <></>}
-        {/* <VoteSuccessModal></VoteSuccessModal> */}
         {this.props.reduxState.errors.invalidEmail === "email in use" ? (
           <ReturningVoterMessage />
         ) : (
