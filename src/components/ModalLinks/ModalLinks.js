@@ -16,6 +16,8 @@ class ModalLinks extends Component {
   render() {
     return (
       <Modal
+        basic
+        dimmer={'blurring'}
         trigger={
           <button class="ui button mobile-menu" onClick={this.handleOpen}>
             <i class="bars icon" />
@@ -23,7 +25,6 @@ class ModalLinks extends Component {
         }
         open={this.state.modalOpen}
         onClose={this.handleClose}
-        basic
         size='fullscreen'
       >
         <Modal.Content>

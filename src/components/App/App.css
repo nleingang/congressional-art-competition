@@ -87,6 +87,24 @@ input {
     background-color: rgba(255, 255, 255, .90) !important;
 }
 
+/* overrides transparent background setting for .ui.dimmer */
+.blurring.dimmable>.dimmer {
+    background-color: rgba(0, 0, 0, .9) !important;
+}
+
+.ui.basic.modal>.content {
+    text-align: center;
+}
+
+/* overrides .ui.basic.modal settings */
+.centered-modal .header, .centered-modal h4 {
+    text-align: center!important;
+}
+
+.centered-modal .description {
+    text-align: left !important;
+}
+
 @media only screen and (max-width: 799px) {
     .nav {
         display: none;

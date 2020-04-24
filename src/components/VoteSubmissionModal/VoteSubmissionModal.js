@@ -66,41 +66,44 @@ class VoteSubmissionModal extends Component {
 
     return (
       <div>
-        <Modal open={this.state.modalOpen}>
-          <Modal.Header>Review And Submit</Modal.Header>
+        <Modal
+          dimmer={'blurring'}
+          className="submit-modal centered-modal"
+          open={this.state.modalOpen}>
+          <Modal.Header>Your choices!</Modal.Header>
           <Modal.Content>
-            <Segment>
+            <Segment basic>
               <Grid columns={3} stackable divided textAlign="center">
                 <Grid.Row>
                   <Grid.Column>
                     <Header>First Place</Header>
-                    <Image
-                      src={this.getImageUrl(
-                        this.props.reduxState.voteChoicesReducer[0]
-                      )}
-                      size="small"
-                      centered
-                    />
+                    <div class="img-wrapper">
+                      <Image
+                        src={this.getImageUrl(
+                          this.props.reduxState.voteChoicesReducer[0]
+                        )}
+                      />
+                    </div>
                   </Grid.Column>
                   <Grid.Column>
                     <Header>Second Place</Header>
-                    <Image
-                      src={this.getImageUrl(
-                        this.props.reduxState.voteChoicesReducer[1]
-                      )}
-                      size="small"
-                      centered
-                    />
+                    <div class="img-wrapper">
+                      <Image
+                        src={this.getImageUrl(
+                          this.props.reduxState.voteChoicesReducer[1]
+                        )}
+                      />
+                    </div>
                   </Grid.Column>
                   <Grid.Column>
                     <Header>Third Place</Header>
-                    <Image
-                      src={this.getImageUrl(
-                        this.props.reduxState.voteChoicesReducer[2]
-                      )}
-                      size="small"
-                      centered
-                    />
+                    <div class="img-wrapper">
+                      <Image
+                        src={this.getImageUrl(
+                          this.props.reduxState.voteChoicesReducer[2]
+                        )}
+                      />
+                    </div>
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
@@ -110,7 +113,7 @@ class VoteSubmissionModal extends Component {
                 <Grid.Column>
                   { errors.invalidZip !== '' ? 
                     <>
-                      <Input 
+                      <Input
                         error
                         placeholder="Zip Code" 
                         value={this.state.zip} 
@@ -128,6 +131,8 @@ class VoteSubmissionModal extends Component {
                     />
                   }
                 </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
                 <Grid.Column>
                   { errors.invalidEmail !== '' ? 
                     <>
@@ -156,10 +161,10 @@ class VoteSubmissionModal extends Component {
               <Grid columns={2} textAlign="center">
               <Grid.Row>
                 <Grid.Column>
-                  <Button onClick={this.handleCancel}>Cancel</Button>
+                  <Button inverted color={'red'} onClick={this.handleCancel}>Cancel</Button>
                 </Grid.Column>
                 <Grid.Column>
-                  <Button onClick={this.handleSubmit}>Submit</Button>
+                  <Button positive onClick={this.handleSubmit}>Submit</Button>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

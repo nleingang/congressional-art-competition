@@ -12,7 +12,12 @@ class ReturningVoterMessage extends Component {
 
     return (
       <div>
-        <Modal size="mini" open={this.state.modalOpen}>
+        <Modal basic
+          dimmer={'blurring'}
+          onClose={() => {this.props.dispatch({ type: "TRIGGER_RESET" });}}
+          size="mini"
+          open={this.state.modalOpen}
+        >
           <Modal.Content>
             <h4>
               Our records indicate that you have already voted.

@@ -26,19 +26,21 @@ class VoteButtonModal extends Component {
       <>
       {/* ternary will not render button if user is in vote mode */}
       {this.props.reduxState.voteMode ? <></> :
-      <Modal
+      <Modal basic
         trigger={
           <Button size="large" onClick={this.handleOpen}>
             Cast Your Vote!
           </Button>
         }
+        className="centered-modal"
+        dimmer={'blurring'}
         open={this.state.modalOpen}
         onClose={this.handleClose}
       >
         <Modal.Header>Get ready to vote!</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            <Header>Voting Instructions</Header>
+            <h4>Voting Instructions</h4>
             <p>
               Cast your vote for 1st, 2nd, and 3rd place prizes! You must cast
               your votes in order.
@@ -64,7 +66,7 @@ class VoteButtonModal extends Component {
           </Modal.Description>
           <Modal.Actions>
             <div className="got-it">
-              <Button onClick={this.triggerVoteMode} positive>
+              <Button color={'green'} inverted onClick={this.triggerVoteMode}>
                 <Icon name="checkmark" /> Got it!
               </Button>
             </div>
