@@ -59,9 +59,25 @@ function* logoutUser(action) {
   }
 }
 
+function* checkIfAdminExists() {
+  try {
+    const response = yield axios.get('api/user/checkifadminexists')
+    console.log(response.data)
+    if (response.data[0]) {
+      yield put({ type: 'DISABLE_REGISTER'})
+    } 
+    else {
+      yield put({ type: "ENABLE_REGISTER"})
+    }
+  } catch(error) {
+    console.log('Error with checking if admin exists:', error)
+  }
+}
+
 function* loginSaga() {
   yield takeLatest('LOGIN', loginUser);
   yield takeLatest('LOGOUT', logoutUser);
+  yield takeLatest('CHECK_IF_ADMIN_EXISTS', checkIfAdminExists);
 }
 
 export default loginSaga;

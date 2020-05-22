@@ -40,4 +40,17 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.get('/checkifadminexists', (req, res) => {
+  const queryText = `SELECT * FROM "admin"`;
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log("Error completing GET check if admin exists query:", err);
+      res.sendStatus(500);
+    });
+})
+
 module.exports = router;

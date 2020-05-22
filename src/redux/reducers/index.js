@@ -9,6 +9,7 @@ import voteChoicesReducer from './voteChoicesReducer';
 import voteSubmissionModalReducer from './voteSubmissionModalReducer';
 import voteRankDisplayReducer from './voteRankDisplayReducer';
 import voteSuccess from './voteSuccess';
+import disableRegisterReducer from './disableRegisterReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -26,7 +27,8 @@ const appReducer = combineReducers({
   voteChoicesReducer,
   voteSubmissionModalReducer,
   voteRankDisplayReducer,
-  voteSuccess
+  voteSuccess,
+  disableRegisterReducer
 });
 
 const rootReducer = (state, action) => {

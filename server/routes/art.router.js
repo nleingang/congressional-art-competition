@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
       res.send(result.rows);
     })
     .catch((err) => {
-      console.log("Error completing GET admin auctions query:", err);
+      console.log("Error completing GET artwork query:", err);
       res.sendStatus(500);
     });
 });
