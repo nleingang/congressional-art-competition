@@ -5,7 +5,7 @@ class Description extends Component {
   render() {
     return (
       <Segment raised>
-        Every year since 1982, each U.S. Representatives selects a piece of
+        Every year since 1982, each U.S. Representative selects a piece of
         visual art to represent their district on display in the U.S. Capitol. I
         love this competition – art is often the context that helps us
         understand who we are and where our common ground is. 
