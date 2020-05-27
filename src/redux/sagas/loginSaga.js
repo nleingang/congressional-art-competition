@@ -62,7 +62,6 @@ function* logoutUser(action) {
 function* checkIfAdminExists() {
   try {
     const response = yield axios.get('api/user/checkifadminexists')
-    console.log(response.data)
     if (response.data[0]) {
       yield put({ type: 'DISABLE_REGISTER'})
     } 
