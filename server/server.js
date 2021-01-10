@@ -33,15 +33,22 @@ app.use('/api/voters', voterRouter);
 app.use('/api/votes', voteRouter);
 
 //s3 photo upload
-app.use(
-  "/s3",
-  UploaderS3Router({
-    bucket: process.env.S3_BUCKET, // required
-    region: "us-east-1", // optional
-    headers: { "Access-Control-Allow-Origin": "*" }, // optional
-    ACL: "public-read", // this is the default - set to `public-read` to let anyone view upload
-  })
-);
+// app.use(
+//   "/s3",
+//   UploaderS3Router({
+//     bucket: process.env.S3_BUCKET, // required
+//     region: "us-east-1", // optional
+//     headers: { "Access-Control-Allow-Origin": "*" }, // optional
+//     ACL: "public-read", // this is the default - set to `public-read` to let anyone view upload
+//   })
+// );
+
+app.use('/s3', require('react-dropzone-s3-uploader/s3router')({
+  bucket: process.env.S3_BUCKET,                  // required
+  region: 'us-east-1',                            // optional
+  headers: {'Access-Control-Allow-Origin': '*'},  // optional
+  ACL: 'private',                                 // this is the default - set to `public-read` to let anyone view uploads
+}));
 
 // Serve static files
 app.use(express.static('build'));

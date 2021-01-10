@@ -6,7 +6,7 @@ export default class S3Uploader extends React.Component {
 
   render() {
     const uploadOptions = {
-      server: `${process.env.PORT}` | "http://localhost:5000",
+      server: "http://localhost:5000",
       signingUrlQueryParams: { uploadType: "avatar" },
     };
     const s3Url = "https://congressional-art-competition.s3.amazonaws.com";
