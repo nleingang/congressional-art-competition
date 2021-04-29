@@ -13,8 +13,8 @@ class Description extends Component {
         piece. What is America to you? 
         <br></br>
         <br></br>
-        Voting is open to MN05 residents May 27
-        through June 2. We will announce the winner after voting has closed.
+        Voting is open to MN05 residents May 1
+        through 15. We will announce the winner after voting has closed.
         <br></br>
         <br></br>
         Click on the "Cast Your Vote" button below to choose your favorite
