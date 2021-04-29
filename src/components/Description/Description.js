@@ -9,12 +9,10 @@ class Description extends Component {
         visual art to represent their district on display in the U.S. Capitol. I
         love this competition – art is often the context that helps us
         understand who we are and where our common ground is. 
-        This year, I encouraged students to think about our shared country when making their
-        piece. What is America to you? 
         <br></br>
         <br></br>
-        Voting is open to MN05 residents May 27
-        through June 2. We will announce the winner after voting has closed.
+        Voting is open to MN05 residents May 1
+        through 15. We will announce the winner after voting has closed.
         <br></br>
         <br></br>
         Click on the "Cast Your Vote" button below to choose your favorite
